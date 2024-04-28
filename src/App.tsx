@@ -19,18 +19,36 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Tabs, Tab, Card, CardBody, Button } from "@nextui-org/react";
+import {
+  CardHeader,
+  CardFooter,
+  Divider,
+  Link,
+  Image,
+} from "@nextui-org/react";
 
 function App() {
   const [page, setPage] = useState("home"); // State to manage the current page
 
   const mailto = "mailto:elai.mizrahi@gmail.com";
+  const aboutRef = useRef(null);
 
-  // Function to handle page navigation
-  const navigateToPage = (pageName: string) => {
-    setPage(pageName);
+  const scrollToSection = (sectionKey: React.Key) => {
+    const element = document.getElementById(`${sectionKey}`); // Your target element
+    const headerOffset = 75;
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -45,7 +63,8 @@ function App() {
                 radius="full"
                 size="lg"
                 variant="solid"
-                style={{ color: "white", padding: "10px" }}>
+                style={{ color: "white", padding: "10px" }}
+                onSelectionChange={(tab) => scrollToSection(tab)}>
                 <Tab key="about" title="About Me" style={{ margin: "3px" }} />
                 <Tab key="experience" title="Experience" />
                 <Tab key="projects" title="Projects" />
@@ -92,66 +111,58 @@ function App() {
                     }}
                     repeat={Infinity}
                   />
-                  <Group style={{ marginRight: "auto", marginTop: "10px" }}>
-                    <Button style={{ backgroundColor: "#7828C8" }}>
-                      <InsertDriveFileIcon />
-                      Resume
-                    </Button>
-                    <Button
-                      style={{
-                        marginRight: "auto",
-                        backgroundColor: "#004493",
-                      }}>
-                      <LinkedInIcon />
-                      Linkedin
-                    </Button>
-                    <Button
-                      style={{
-                        marginRight: "auto",
-                        backgroundColor: "#18181B",
-                      }}>
-                      <GitHubIcon />
-                      Github
-                    </Button>
-                  </Group>
+<Group style={{ marginRight: "auto", marginTop: "10px" }}>
+  <Button style={{ backgroundColor: "#7828C8" }}>
+    <InsertDriveFileIcon />
+    Resume
+  </Button>
+  <Button
+    onClick={() => window.open("https://www.linkedin.com/in/elai-mizrahi/", "_blank")}
+    style={{ marginRight: "auto", backgroundColor: "#004493" }}
+  >
+    <LinkedInIcon />
+    Linkedin
+  </Button>
+  <Button
+    onClick={() => window.open("https://github.com/elaimizrahi", "_blank")}
+    style={{ marginRight: "auto", backgroundColor: "#18181B" }}
+  >
+    <GitHubIcon />
+    Github
+  </Button>
+</Group>
                 </Stack>
               </Group>
-              <Card>
-                <CardBody>
-                  <section id="about">ABOUT</section>
-                  <div>
-                    {" "}
-                    19 y/o software engineer, student, and aspiring founder
-                  </div>
-                  <div
-                    style={{
-                      paddingTop: "20px",
-                      textAlign: "center",
-                      display: "flex",
-                      fontFamily:
-                        "-apple-system, BlinkMacSystemFont, sans-serif",
-                    }}>
-                    I am currently entering my second year of studying Software
-                    Engineering at the University of Waterloo. Most recently, I
-                    completed a co-op term at Secoda, a YC S21 company,
-                    developing fullstack features for the engineering team. I am
-                    now looking for a Winter 2024 co-op position in software
-                    engineering or a related field. You can reach me at
-                    emizrahi@uwaterloo.ca, or click any of the links at the
-                    bottom of the page.
-                  </div>
-                </CardBody>
-              </Card>{" "}
-              <section id="projects">PROJECTS</section>
-              <h2 style={{ textAlign: "left", marginBottom: 0 }}>
+              <section id="about" />
+              <p style={{ fontWeight: "bold" }}>
+                20 y/o software engineer, student, and aspiring founder
+              </p>
+              <div>
+                I am in my second year of{" "}
+                <span style={{ fontWeight: "bold" }}>Software Engineering</span>{" "}
+                at the University of Waterloo with a specialization in
+                <span style={{fontWeight: 'bold'}}> Artificial Intelligence</span>. I have just completed co-op terms at
+                Avante IO and Secoda where I developed full-stack features. I am looking for a <span style={{fontWeight: 'bold'}}>Fall 2024 Software Engineering co-op </span>
+                position. You can
+                reach me at <a href="mailto:emizrahi@uwaterloo.ca" style={{textDecoration: 'underline', fontWeight: 'bold'}}>emizrahi@uwaterloo.ca</a>!
+              </div>
+
+              <section id="experience" />
+              <h2 style={{ textAlign: "left", marginBottom: 0, width: "20%" }}>
+                <Card style={{ textAlign: "center", marginRight: 'auto', width: '100%', height: '40%'}}>
                 👨‍💻 Experience{" "}
+                </Card>
               </h2>
+              
               <Box
                 ta="center"
                 p="xl"
                 style={{ borderRadius: "md" }}
                 fz="xl"
-                mt={0}>
+                mt={0}
+                w={'40%'}>
+                                  <Card style={{  textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}}>
+
                 <Group>
                   <img
                     src={secodaLogo}
@@ -174,6 +185,7 @@ function App() {
                     </h6>
                   </div>
                 </Group>
+                </Card>
                 <Group style={{ width: "1000px" }}>
                   <CardItem
                     title="Command Palette"
@@ -219,7 +231,10 @@ function App() {
                   />
                 </Group>
               </Box>
+
               <Group>
+              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}}>
+                <Group>
                 <img
                   src={uw}
                   alt=""
@@ -229,7 +244,7 @@ function App() {
                     borderRadius: "25%",
                   }}
                 />
-                <div>
+                <Stack>
                   <h4 style={{ marginBottom: 0 }}>
                     UWaterloo EcoCar Design Team
                   </h4>
@@ -241,7 +256,9 @@ function App() {
                     }}>
                     Software Team
                   </h6>
-                </div>
+                </Stack>
+                </Group>
+                </Card>
                 <List
                   size="md"
                   style={{
@@ -264,6 +281,8 @@ function App() {
                   </List.Item>
                 </List>
               </Group>
+              <section id="projects" />
+
               <h2 style={{ textAlign: "left" }}>🛠️ Projects </h2>
             </Stack>
             <Group style={{ width: 1500, justifyContent: "center" }}>
@@ -296,6 +315,8 @@ the car's movement"
             </Group>{" "}
             <Group w={1000} style={{ justifyContent: "space-around" }}></Group>
             <Stack style={{ paddingTop: "0px", width: "50%" }}>
+              <section id="skills" />
+
               <h2 style={{ textAlign: "left" }}>🪐 Skills </h2>
               <Box color="darkGray" ta="left" p="md" pt={0} fz="xl">
                 <Stack gap={0}>
@@ -320,7 +341,7 @@ the car's movement"
                   </div>
                 </Stack>
               </Box>
-              <section id="contact">CONTACT ME</section>
+              <section id="contact" />
 
               <h2 style={{ textAlign: "left" }}>📞 Contact Me </h2>
               <Group style={{ justifyContent: "space-around" }}>
