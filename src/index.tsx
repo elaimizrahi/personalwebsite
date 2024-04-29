@@ -1,26 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { MantineProvider } from "@mantine/core";
-import '@mantine/core/styles.css';
-import {NextUIProvider} from "@nextui-org/react";
-import backgroundImage from "./images/background3.jpeg";
+import "@mantine/core/styles.css";
+import { NextUIProvider } from "@nextui-org/react";
+import backgroundImage from "./images/background1.png";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <NextUIProvider>
-    <img src={backgroundImage} alt='background' style={{width:'100%', height: '100vh', position:'fixed', zIndex: -1}}></img>
-    
-    <main className="dark text-foreground">
-    <MantineProvider>
-    <App />
+      <img
+        src={backgroundImage}
+        alt="background"
+        style={{
+          width: "100%",
+          height: "100vh",
+          position: "fixed",
+          zIndex: -1,
+        }}></img>
 
-    </MantineProvider>
+      <main className="dark text-foreground">
+        <MantineProvider>
+          <App />
+        </MantineProvider>
       </main>
     </NextUIProvider>
   </React.StrictMode>

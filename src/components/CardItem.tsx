@@ -1,7 +1,16 @@
-import React from "react";
-import {  Group, Text, Badge, Button, Stack } from "@mantine/core";
+import React, { useState, useEffect, useRef } from "react";
+import { Group, Text, Badge, Button, Stack } from "@mantine/core";
 import commandPalette from "../images/commandPalette.png";
-import {Card, CardHeader, CardBody, CardFooter, Image} from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Image,
+} from "@nextui-org/react";
+import { motion, Variants } from "framer-motion";
+import { useScroll } from "framer-motion";
+
 interface CardItemProps {
   title: string;
   description: string;
@@ -21,51 +30,97 @@ const CardItem: React.FC<CardItemProps> = ({
 }) => {
   const typeColor =
     type === "feature" ? "blue" : type === "improvement" ? "pink" : "orange";
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["-10", "-1.5"],
+  });
+  console.log(scrollYProgress);
+  const cardVariants: Variants = {
+    offscreen: {},
+    onscreen: {},
+  };
   return (
-    <Card
-      shadow="sm"
-      radius="md"
-      style={{ width: "100%", margin: "25px", padding: '1%'}}
-      isBlurred
-      
-    >
+    <div ref={ref}>
+      <motion.div
+        className="card-container"
+        initial="offscreen"
+        whileInView="onscreen"
+        style={{ scale: scrollYProgress }}>
+        <motion.div className="card" variants={cardVariants}>
+          <Card
+            shadow="sm"
+            radius="md"
+            style={{
+              width: "90%",
+              margin: "25px",
+              padding: "1%",
+              marginRight: "auto",
+            }}
+            className={isInView ? "exit-effect" : "exit-effect smaller"}
+            isBlurred
+            id={`myObject - ${title}`}>
+            <CardBody>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <img
+                  src={image}
+                  alt=""
+                  style={{
+                    maxWidth: "30%",
+                    borderRadius: "16px",
+                    maxHeight: "12.5rem",
+                  }}
+                />
+                <div
+                  style={{
+                    marginLeft: "2%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}>
+                  <div
+                    style={{
+                      marginLeft: "2%",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}>
+                    <Text fw={500}>{title}</Text>
+                    <Badge color={typeColor} variant="light">
+                      {type}
+                    </Badge>
+                  </div>
+                  <div
+                    style={{
+                      marginLeft: "2%",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}>
+                    <Text size="sm" color="dimmed" ta="left">
+                      {description}
+                    </Text>
 
-      <CardBody >
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-
-        <img src={image} alt="" style={{width: '30%', borderRadius: '16px'}}/>
-        <div style={{marginLeft: '2%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-        <div style={{marginLeft: '2%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-
-        <Text fw={500}>{title}</Text>
-        <Badge color={typeColor} variant="light">
-          {type}
-        </Badge>
-        </div>
-        <div style={{marginLeft: '2%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-
-      <Text size="sm" color="dimmed" ta="left" >
-        {description}
-      </Text>
-
-      <Button
-        variant="light"
-        color="blue"
-        fullWidth
-        mt="md"
-        radius="md"
-        onClick={() => {
-          window.open(link);
-        }}
-      >
-        {buttonLabel}
-      </Button>
-      </div>
-      </div>
-      </div>
-      </CardBody>
-
-    </Card>
+                    <Button
+                      variant="light"
+                      color="blue"
+                      fullWidth
+                      mt="md"
+                      radius="md"
+                      onClick={() => {
+                        window.open(link);
+                      }}>
+                      {buttonLabel}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
