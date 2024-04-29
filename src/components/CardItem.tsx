@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Group, Image, Text, Badge, Button } from "@mantine/core";
+import {  Group, Text, Badge, Button, Stack } from "@mantine/core";
 import commandPalette from "../images/commandPalette.png";
-
+import {Card, CardHeader, CardBody, CardFooter, Image} from "@nextui-org/react";
 interface CardItemProps {
   title: string;
   description: string;
@@ -24,25 +24,27 @@ const CardItem: React.FC<CardItemProps> = ({
   return (
     <Card
       shadow="sm"
-      padding="lg"
       radius="md"
-      withBorder
-      style={{ width: "300px", margin: "25px" }}
+      style={{ width: "100%", margin: "25px", padding: '1%'}}
+      isBlurred
+      
     >
-      <Card.Section>
-        <Image src={image} height={160} alt="No Picture" />
-      </Card.Section>
 
-      <Group justify="apart" mt="md" mb="xs">
+      <CardBody >
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+
+        <img src={image} alt="" style={{width: '30%', borderRadius: '16px'}}/>
+        <div style={{marginLeft: '2%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+        <div style={{marginLeft: '2%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+
         <Text fw={500}>{title}</Text>
-      </Group>
-      <Group justify="apart" mt="md" mb="xs">
         <Badge color={typeColor} variant="light">
           {type}
         </Badge>
-      </Group>
+        </div>
+        <div style={{marginLeft: '2%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
 
-      <Text size="sm" color="dimmed" ta="left">
+      <Text size="sm" color="dimmed" ta="left" >
         {description}
       </Text>
 
@@ -58,6 +60,11 @@ const CardItem: React.FC<CardItemProps> = ({
       >
         {buttonLabel}
       </Button>
+      </div>
+      </div>
+      </div>
+      </CardBody>
+
     </Card>
   );
 };

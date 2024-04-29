@@ -11,6 +11,7 @@ import uw from "./images/uw.png";
 import goose from "./images/goose.png";
 import spotify from "./images/spotify.png";
 import map from "./images/map.png";
+import uwaft from "./images/uwaft.jpeg";
 import mail from "./images/mail.png";
 import github from "./images/github.png";
 import linkedin from "./images/linkedin.png";
@@ -29,6 +30,7 @@ import {
   Link,
   Image,
 } from "@nextui-org/react";
+import { isMobile } from 'react-device-detect';
 
 function App() {
   const [page, setPage] = useState("home"); // State to manage the current page
@@ -51,6 +53,7 @@ function App() {
     }
   };
 
+
   return (
     <div>
       <div>
@@ -61,10 +64,10 @@ function App() {
                 color={"default"}
                 aria-label="Tabs colors"
                 radius="full"
-                size="lg"
                 variant="solid"
-                style={{ color: "white", padding: "10px" }}
-                onSelectionChange={(tab) => scrollToSection(tab)}>
+                style={{ color: "white", padding: "10px", width: "100%", height: '20%'}}
+                onSelectionChange={(tab) => scrollToSection(tab)}
+                >
                 <Tab key="about" title="About Me" style={{ margin: "3px" }} />
                 <Tab key="experience" title="Experience" />
                 <Tab key="projects" title="Projects" />
@@ -149,7 +152,7 @@ function App() {
 
               <section id="experience" />
               <h2 style={{ textAlign: "left", marginBottom: 0, width: "20%" }}>
-                <Card style={{ textAlign: "center", marginRight: 'auto', width: '100%', height: '40%'}}>
+                <Card style={{ textAlign: "center", marginRight: 'auto', width: '100%', height: '40%'}} isBlurred>
                 👨‍💻 Experience{" "}
                 </Card>
               </h2>
@@ -158,10 +161,9 @@ function App() {
                 ta="center"
                 p="xl"
                 style={{ borderRadius: "md" }}
-                fz="xl"
                 mt={0}
-                w={'40%'}>
-                                  <Card style={{  textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}}>
+                w={'45%'}>
+                                  <Card style={{  textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
 
                 <Group>
                   <img
@@ -174,7 +176,7 @@ function App() {
                     }}
                   />
                   <div>
-                    <h3 style={{ marginBottom: 0 }}>Secoda (YC S21)</h3>
+                    <h4 style={{ marginBottom: 0 }}>Secoda (YC S21)</h4>
                     <h6
                       style={{
                         marginTop: 0,
@@ -186,16 +188,17 @@ function App() {
                   </div>
                 </Group>
                 </Card>
-                <Group style={{ width: "1000px" }}>
+                </Box>
+                <Group >
                   <CardItem
                     title="Command Palette"
                     type="feature"
                     description="With the command palette feature, users are able to quickly search through their workspace, create new resources, and navigate through Secoda."
                     image={commandPalette}
                     link={
-                      "https://docs.secoda.co/secoda-change-log#august-2-2023-release-7.4.7"
+                      "https://docs.secoda.co/features/search"
                     }
-                    buttonLabel="View in Changelog"
+                    buttonLabel="View in Documentation"
                   />
                   <CardItem
                     title="Jira Integration"
@@ -225,15 +228,19 @@ function App() {
                     description="Developed new MS SQL Stored Procedures to extract lineage MS SQL table's lineage, assigning  responsible queries to their respective lineages"
                     image={mssql}
                     link={
-                      "https://docs.secoda.co/integrations/databases/microsoft-sql-server7"
+                      "https://docs.secoda.co/integrations/databases/microsoft-sql-server/"
                     }
                     buttonLabel="View in Documentation"
                   />
                 </Group>
-              </Box>
 
               <Group>
-              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}}>
+              <Box
+                ta="center"
+                p="xl"
+                style={{ borderRadius: "md" }}
+                mt={0}>
+              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
                 <Group>
                 <img
                   src={uw}
@@ -259,33 +266,25 @@ function App() {
                 </Stack>
                 </Group>
                 </Card>
-                <List
-                  size="md"
-                  style={{
-                    color: "white",
-                    textAlign: "left",
-                    paddingLeft: 100,
-                  }}>
-                  <List.Item>
-                    Researched methods of creating 3D model of automotive
-                    interiors using Blender and Python
-                  </List.Item>
-                  <List.Item>
-                    Worked in software team, completing tasks in a timely manner
-                    to prepare design team for upcoming integration with
-                    Cadillac Lyric
-                  </List.Item>
-                  <List.Item>
-                    Used Git and Github tooling to ensure high quality code
-                    production and reviews in an agile development environment
-                  </List.Item>
-                </List>
+                </Box>
+
+                  <CardItem
+                    title="Software Developer"
+                    type="feature"
+                    description="Researched methods of creating 3D model of automotive
+                    interiors using Blender and Python"
+                    image={uwaft}
+                    link={
+                      "https://www.uwaft.ca/"
+                    }
+                    buttonLabel="View Design Team"
+                  />
               </Group>
               <section id="projects" />
-
+              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
               <h2 style={{ textAlign: "left" }}>🛠️ Projects </h2>
-            </Stack>
-            <Group style={{ width: 1500, justifyContent: "center" }}>
+              </Card>
+            <Group style={{ width: '100%', justifyContent: "center" }}>
               <CardItem
                 title="Self Driving RC Car"
                 description="Connected a Raspberry Pi Zero to the Raspberry Pi OS, TensorFlow, and Python, detecting objects using their location to control
@@ -314,10 +313,12 @@ the car's movement"
               />{" "}
             </Group>{" "}
             <Group w={1000} style={{ justifyContent: "space-around" }}></Group>
-            <Stack style={{ paddingTop: "0px", width: "50%" }}>
+            <Stack style={{ paddingTop: "0px", width: "100%" }}>
               <section id="skills" />
-
+              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
               <h2 style={{ textAlign: "left" }}>🪐 Skills </h2>
+              </Card>
+              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
               <Box color="darkGray" ta="left" p="md" pt={0} fz="xl">
                 <Stack gap={0}>
                   <h4 style={{ alignSelf: "left", paddingTop: 0 }}>
@@ -341,10 +342,13 @@ the car's movement"
                   </div>
                 </Stack>
               </Box>
+              </Card>
               <section id="contact" />
-
+              <Card style={{ textAlign: "center", marginRight: 'auto', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
               <h2 style={{ textAlign: "left" }}>📞 Contact Me </h2>
-              <Group style={{ justifyContent: "space-around" }}>
+              </Card>
+              <Card style={{ textAlign: "center", width: '100%', height: '40%', borderRadius: '24px', padding: '8px'}} isBlurred>
+              <Group style={{ justifyContent: "space-around",  width: '100%' }}>
                 <a href={mailto}>
                   <img src={mail} height={50} width={75} />
                 </a>
@@ -360,6 +364,9 @@ the car's movement"
                   />
                 </a>
               </Group>
+              </Card>
+            </Stack>
+
             </Stack>
           </header>
         </div>
