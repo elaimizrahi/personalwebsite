@@ -193,7 +193,7 @@ function App() {
                   }}
                   alt="Profile"></img>
                 <Stack ml={25}>
-                  <Text fw={500} fz={"2rem"} mr="auto">
+                  <Text fw={500} fz={"1.7rem"} mr="auto">
                     Hello, I'm{" "}
                   </Text>
                   <TypeAnimation
@@ -209,7 +209,7 @@ function App() {
                     speed={50}
                     deletionSpeed={70}
                     style={{
-                      fontSize: "2rem",
+                      fontSize: "1.7rem",
                       fontWeight: "bold",
                       marginRight: "auto",
                     }}
@@ -251,7 +251,7 @@ function App() {
                 </Stack>
               </Group>
               <p style={{ fontWeight: "bold" }}>
-                20 y/o software engineer, student, and aspiring founder
+                Software engineer, student, and aspiring founder
               </p>
               <div>
                 I am in my second year of{" "}
