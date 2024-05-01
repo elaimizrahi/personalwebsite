@@ -64,10 +64,8 @@ import {
   SiLinear,
   SiGithubactions,
   SiGooglecolab,
-  SiPandas,
-  SiNumpy,
-  SiWebpack,
-  SiOpencv,
+  SiFigma,
+  SiMicrosoftazure
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbSql } from "react-icons/tb";
@@ -682,6 +680,8 @@ the car's movement"
                               <SiLinear />
                               <SiGithubactions />
                               <SiGooglecolab />
+                              <SiFigma/>
+  <SiMicrosoftazure/>
                             </Group>
                           </Code>
                         </div>
