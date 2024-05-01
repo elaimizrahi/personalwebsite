@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Group, Text, Badge, Button, Stack } from "@mantine/core";
-import commandPalette from "../images/commandPalette.png";
+import React, { useState, useRef } from "react";
+import { Text, Badge, Button } from "@mantine/core";
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
-  Image,
 } from "@nextui-org/react";
 import { motion, Variants } from "framer-motion";
 import { useScroll } from "framer-motion";
@@ -30,7 +26,7 @@ const CardItem: React.FC<CardItemProps> = ({
 }) => {
   const typeColor =
     type === "feature" ? "blue" : type === "improvement" ? "pink" : "orange";
-  const [isInView, setIsInView] = useState(false);
+  const [isInView,] = useState(false);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,

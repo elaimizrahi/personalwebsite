@@ -29,7 +29,7 @@ import { useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import GitHubCalendar from "react-github-calendar";
 
-import React, { useState, useRef } from "react";
+import React, {  useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Tabs, Tab, Card, Button, Code } from "@nextui-org/react";
 import {
@@ -72,7 +72,6 @@ import { TbSql } from "react-icons/tb";
 import { BiLogoVuejs } from "react-icons/bi";
 
 function App() {
-
   const mailto = "mailto:emizrahi@uwaterloo.ca";
 
   const scrollToSection = (sectionKey: React.Key) => {
@@ -765,13 +764,13 @@ the car's movement"
                     isBlurred>
                     <Group style={{ justifyContent: "space-around" }}>
                       <a href={mailto}>
-                        <img src={mail} height={50} width={75} />
+                        <img src={mail} alt="" height={50} width={75} />
                       </a>
                       <a href={"https://github.com/elaimizrahi"}>
-                        <img src={github} height={60} width={60} />
+                        <img src={github} alt="" height={60} width={60} />
                       </a>
                       <a href={"https://linkedin.com/in/elai-mizrahi"}>
-                        <img src={linkedin} height={60} width={60} />
+                        <img src={linkedin} alt="" height={60} width={60} />
                       </a>
                       <a href={"tel:2269882795"}>
                         <PhoneIcon

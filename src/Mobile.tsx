@@ -1,7 +1,7 @@
 import "./App.css";
 import profile from "./images/IMG_5423.png";
 import secodaLogo from "./images/secoda.png";
-import { Group, Stack, Box,Text } from "@mantine/core";
+import { Group, Stack, Box, Text } from "@mantine/core";
 import commandPalette from "./images/commandPalette.png";
 import MobileCardItem from "./components/MobileCardItem";
 import Jira from "./images/Jira.png";
@@ -35,9 +35,9 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import React, { useState, useRef } from "react";
+import React, {  useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
-import {  Card, Code } from "@nextui-org/react";
+import { Card, Code } from "@nextui-org/react";
 import {
   SiTypescript,
   SiJavascript,
@@ -76,10 +76,9 @@ import {
 import { FaJava } from "react-icons/fa";
 import { TbSql } from "react-icons/tb";
 import { BiLogoVuejs } from "react-icons/bi";
-import {isMobile} from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 
 function App() {
-
   const mailto = "mailto:emizrahi@uwaterloo.ca";
 
   const scrollToSection = (sectionKey: React.Key) => {
@@ -98,15 +97,18 @@ function App() {
   const secodaref = useRef(null);
   const { scrollYProgress: secodascrollYProgress } = useScroll({
     target: secodaref,
-    offset: ["-4", "-0.5"],  });
+    offset: ["-4", "-0.5"],
+  });
   const avanteref = useRef(null);
   const { scrollYProgress: avantescrollYProgress } = useScroll({
     target: avanteref,
-    offset: ["-4", "-0.5"],  });
+    offset: ["-4", "-0.5"],
+  });
   const uwaftref = useRef(null);
   const { scrollYProgress: uwaftscrollYProgress } = useScroll({
     target: uwaftref,
-    offset: ["-4", "-0.5"],  });
+    offset: ["-4", "-0.5"],
+  });
 
   return (
     <div>
@@ -173,7 +175,12 @@ function App() {
             <section id="about" />
 
             <Stack
-              style={{ paddingTop: "75px", width: "85%", justify: "center", alignContent: 'center' }}>
+              style={{
+                paddingTop: "75px",
+                width: "85%",
+                justify: "center",
+                alignContent: "center",
+              }}>
               <Group style={{ paddingBottom: "50px" }}>
                 <img
                   src={profile}
@@ -803,13 +810,13 @@ the car's movement"
                     isBlurred>
                     <Group style={{ justifyContent: "space-around" }}>
                       <a href={mailto}>
-                        <img src={mail} height={50} width={75} />
+                        <img src={mail} alt="" height={50} width={75} />
                       </a>
                       <a href={"https://github.com/elaimizrahi"}>
-                        <img src={github} height={60} width={60} />
+                        <img src={github} alt="" height={60} width={60} />
                       </a>
                       <a href={"https://linkedin.com/in/elai-mizrahi"}>
-                        <img src={linkedin} height={60} width={60} />
+                        <img src={linkedin} alt="" height={60} width={60} />
                       </a>
                       <a href={"tel:2269882795"}>
                         <PhoneIcon
@@ -819,8 +826,7 @@ the car's movement"
                     </Group>
                   </Card>
                 </Card>
-                {isMobile &&
-                <div style={{marginBottom: '40%'}}/>}
+                {isMobile && <div style={{ marginBottom: "40%" }} />}
               </Stack>
             </Stack>
           </header>
