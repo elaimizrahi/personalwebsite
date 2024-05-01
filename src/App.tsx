@@ -32,16 +32,16 @@ import GitHubCalendar from "react-github-calendar";
 import React, { useState, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Tabs, Tab, Card, CardBody, Button, Code } from "@nextui-org/react";
-import { 
-  SiTypescript, 
-  SiJavascript, 
-  SiPython, 
-  SiCplusplus, 
-  SiC, 
-  SiGo, 
-  SiTerraform, 
-  SiSwift, 
-  SiHtml5, 
+import {
+  SiTypescript,
+  SiJavascript,
+  SiPython,
+  SiCplusplus,
+  SiC,
+  SiGo,
+  SiTerraform,
+  SiSwift,
+  SiHtml5,
   SiCss3,
   SiReact,
   SiMongodb,
@@ -67,12 +67,11 @@ import {
   SiPandas,
   SiNumpy,
   SiWebpack,
-  SiOpencv
-} from 'react-icons/si';
+  SiOpencv,
+} from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbSql } from "react-icons/tb";
 import { BiLogoVuejs } from "react-icons/bi";
-
 
 function App() {
   const [page, setPage] = useState("home"); // State to manage the current page
@@ -177,12 +176,11 @@ function App() {
                     repeat={Infinity}
                   />
                   <Group style={{ marginRight: "auto", marginTop: "10px" }}>
-                  <a href='./Elai_Mizrahi_Resume.pdf' target='_blank'> 
-
-                    <Button style={{ backgroundColor: "#7828C8" }}>
-                      <InsertDriveFileIcon />
-                      Resume
-                    </Button>
+                    <a href="./Elai_Mizrahi_Resume.pdf" target="_blank">
+                      <Button style={{ backgroundColor: "#7828C8" }}>
+                        <InsertDriveFileIcon />
+                        Resume
+                      </Button>
                     </a>
                     <Button
                       onClick={() =>
@@ -275,7 +273,7 @@ function App() {
                             borderRadius: "24px",
                             padding: "8px",
                             alignContent: "center",
-                            justifyItems: "center"
+                            justifyItems: "center",
                           }}
                           isBlurred>
                           <Group>
@@ -308,7 +306,12 @@ function App() {
                             </div>
                           </Group>
 
-                          <Group style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                          <Group
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}>
                             <CardItem
                               title="Consili.io"
                               type="feature"
@@ -323,9 +326,7 @@ function App() {
                               description="Levaraged and trained AI Models to summarize and analyze articles, delivering their contents and rationales to
                               users with interests in the same topics by using OpenAI, Python, Django modelling, SQL, and AWS S3"
                               image={operations}
-                              link={
-                                "https://consili.io"
-                              }
+                              link={"https://consili.io"}
                               buttonLabel="View Consili"
                             />
                             <CardItem
@@ -343,9 +344,7 @@ function App() {
                               type="feature"
                               description="Conceptualized and created Django database to efficiently query, analyze, and store articles crawled by Consili "
                               image={django}
-                              link={
-                                "https://consili.io"
-                              }
+                              link={"https://consili.io"}
                               buttonLabel="View Consili"
                             />
                           </Group>
@@ -615,14 +614,24 @@ the car's movement"
                           Languages:
                         </h4>
                         <div style={{ fontStyle: "italic", fontSize: "30px" }}>
-  <Code style={{ fontStyle: "italic", fontSize: "65px" }}>
-    <Group><SiJavascript /><SiPython /><SiCplusplus />
-    <SiTypescript /><SiC /><FaJava /><SiGo /><SiTerraform /><SiSwift /><SiHtml5 />
-    <TbSql />
-    <SiCss3 />
-    </Group>
-  </Code>
-</div>
+                          <Code
+                            style={{ fontStyle: "italic", fontSize: "65px" }}>
+                            <Group>
+                              <SiJavascript />
+                              <SiPython />
+                              <SiCplusplus />
+                              <SiTypescript />
+                              <SiC />
+                              <FaJava />
+                              <SiGo />
+                              <SiTerraform />
+                              <SiSwift />
+                              <SiHtml5 />
+                              <TbSql />
+                              <SiCss3 />
+                            </Group>
+                          </Code>
+                        </div>
 
                         <h4
                           style={{
@@ -633,14 +642,25 @@ the car's movement"
                           Frameworks:
                         </h4>
                         <div style={{ fontStyle: "italic", fontSize: "30px" }}>
-                        <Code style={{ fontStyle: "italic", fontSize: "65px" }}>
-    <Group>
-    <SiReact /><SiMongodb /><SiDjango /><SiAmazonaws /><SiNodedotjs /><SiPostgresql /><SiDocker /><SiTensorflow /><SiFirebase /><SiCelery /><SiElasticsearch />
-    <BiLogoVuejs />
-    </Group>
-  </Code>
-</div>
-<h4
+                          <Code
+                            style={{ fontStyle: "italic", fontSize: "65px" }}>
+                            <Group>
+                              <SiReact />
+                              <SiMongodb />
+                              <SiDjango />
+                              <SiAmazonaws />
+                              <SiNodedotjs />
+                              <SiPostgresql />
+                              <SiDocker />
+                              <SiTensorflow />
+                              <SiFirebase />
+                              <SiCelery />
+                              <SiElasticsearch />
+                              <BiLogoVuejs />
+                            </Group>
+                          </Code>
+                        </div>
+                        <h4
                           style={{
                             alignSelf: "left",
                             padding: 0,
@@ -649,13 +669,22 @@ the car's movement"
                           Developer Tools:
                         </h4>
                         <div style={{ fontStyle: "italic", fontSize: "30px" }}>
-                        <Code style={{ fontStyle: "italic", fontSize: "65px" }}>
-    <Group>
-  <SiGit /><SiGithub /><SiVisualstudiocode /><SiTrello /><SiPytest /><SiJira /><SiPowerbi /><SiLinear /><SiGithubactions /><SiGooglecolab />
-  </Group>
-  </Code>
-</div>
-
+                          <Code
+                            style={{ fontStyle: "italic", fontSize: "65px" }}>
+                            <Group>
+                              <SiGit />
+                              <SiGithub />
+                              <SiVisualstudiocode />
+                              <SiTrello />
+                              <SiPytest />
+                              <SiJira />
+                              <SiPowerbi />
+                              <SiLinear />
+                              <SiGithubactions />
+                              <SiGooglecolab />
+                            </Group>
+                          </Code>
+                        </div>
                       </Stack>
                     </Card>
                   </Box>
