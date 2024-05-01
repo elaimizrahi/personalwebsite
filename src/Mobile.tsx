@@ -251,7 +251,7 @@ function App() {
                 </Stack>
               </Group>
               <p style={{ fontWeight: "bold" }}>
-                Software engineer, student, and aspiring founder
+                Software engineer, Student, and Aspiring founder
               </p>
               <div>
                 I am in my second year of{" "}
