@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import Route from "./Route";
 import reportWebVitals from "./reportWebVitals";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
@@ -11,6 +11,7 @@ import backgroundImage from "./images/background1.png";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <NextUIProvider>
@@ -26,7 +27,7 @@ root.render(
 
       <main className="dark text-foreground">
         <MantineProvider>
-          <App />
+          <Route />
         </MantineProvider>
       </main>
     </NextUIProvider>
