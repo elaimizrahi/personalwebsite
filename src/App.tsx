@@ -31,20 +31,53 @@ import GitHubCalendar from "react-github-calendar";
 
 import React, { useState, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { Tabs, Tab, Card, CardBody, Button } from "@nextui-org/react";
-import {
-  CardHeader,
-  CardFooter,
-  Divider,
-  Link,
-  Image,
-} from "@nextui-org/react";
-import { isMobile } from "react-device-detect";
+import { Tabs, Tab, Card, CardBody, Button, Code } from "@nextui-org/react";
+import { 
+  SiTypescript, 
+  SiJavascript, 
+  SiPython, 
+  SiCplusplus, 
+  SiC, 
+  SiGo, 
+  SiTerraform, 
+  SiSwift, 
+  SiHtml5, 
+  SiCss3,
+  SiReact,
+  SiMongodb,
+  SiDjango,
+  SiAmazonaws,
+  SiNodedotjs,
+  SiPostgresql,
+  SiDocker,
+  SiTensorflow,
+  SiFirebase,
+  SiCelery,
+  SiElasticsearch,
+  SiGit,
+  SiGithub,
+  SiVisualstudiocode,
+  SiTrello,
+  SiPytest,
+  SiJira,
+  SiPowerbi,
+  SiLinear,
+  SiGithubactions,
+  SiGooglecolab,
+  SiPandas,
+  SiNumpy,
+  SiWebpack,
+  SiOpencv
+} from 'react-icons/si';
+import { FaJava } from "react-icons/fa";
+import { TbSql } from "react-icons/tb";
+import { BiLogoVuejs } from "react-icons/bi";
+
 
 function App() {
   const [page, setPage] = useState("home"); // State to manage the current page
 
-  const mailto = "mailto:elai.mizrahi@gmail.com";
+  const mailto = "mailto:emizrahi@uwaterloo.ca";
   const aboutRef = useRef(null);
 
   const scrollToSection = (sectionKey: React.Key) => {
@@ -144,10 +177,13 @@ function App() {
                     repeat={Infinity}
                   />
                   <Group style={{ marginRight: "auto", marginTop: "10px" }}>
+                  <a href='./Elai_Mizrahi_Resume.pdf' target='_blank'> 
+
                     <Button style={{ backgroundColor: "#7828C8" }}>
                       <InsertDriveFileIcon />
                       Resume
                     </Button>
+                    </a>
                     <Button
                       onClick={() =>
                         window.open(
@@ -238,6 +274,8 @@ function App() {
                             marginRight: "auto",
                             borderRadius: "24px",
                             padding: "8px",
+                            alignContent: "center",
+                            justifyItems: "center"
                           }}
                           isBlurred>
                           <Group>
@@ -270,44 +308,45 @@ function App() {
                             </div>
                           </Group>
 
-                          <Group style={{ alignContent: "center" }}>
+                          <Group style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <CardItem
-                              title="Command Palette"
+                              title="Consili.io"
                               type="feature"
-                              description="With the command palette feature, users are able to quickly search through their workspace, create new resources, and navigate through Secoda."
+                              description="Directed Consili product to generate summarized news articles with React, Django, Terraform, and AWS, curating personalized news timelines"
                               image={synthesis}
-                              link={"https://docs.secoda.co/features/search"}
-                              buttonLabel="View in Documentation"
+                              link={"https://consili.io"}
+                              buttonLabel="View Consili"
                             />
                             <CardItem
-                              title="Jira Integration"
+                              title="News Analysis"
                               type="feature"
-                              description="Secoda's Jira integration allows for users to pull their Jira issues into Secoda as questions, allowing for a seamless connection between the two workspaces"
+                              description="Levaraged and trained AI Models to summarize and analyze articles, delivering their contents and rationales to
+                              users with interests in the same topics by using OpenAI, Python, Django modelling, SQL, and AWS S3"
                               image={operations}
                               link={
-                                "https://docs.secoda.co/integrations/productivity-tools/jira#h_448e650cba"
+                                "https://consili.io"
                               }
-                              buttonLabel="View in Documentation"
+                              buttonLabel="View Consili"
                             />
                             <CardItem
-                              title="Power BI Authentication"
-                              type="improvement"
-                              description="Developed new Power BI Authentication to enable non-admin users to extract reports, datasets, and workflows, importing them into Secoda"
+                              title="Infrastructure"
+                              type="feature"
+                              description="Implemented an AWS, Terraform, and Django backend to provide enhanced infrastructure for Consili's deployment and architecture"
                               image={consiliinfra}
                               link={
-                                "https://docs.secoda.co/integrations/data-visualization-tools/power-bi"
+                                "https://www.figma.com/file/ny2U5bNhX776yaN3kvi7of/Consili?type=whiteboard&node-id=975%3A1045&t=9IdyMAXetDv1o7GJ-1"
                               }
-                              buttonLabel="View in Documentation"
+                              buttonLabel="View infrastructure"
                             />
                             <CardItem
-                              title="MS SQL Stored Procedures"
+                              title="Django Database"
                               type="feature"
-                              description="Developed new MS SQL Stored Procedures to extract lineage MS SQL table's lineage, assigning  responsible queries to their respective lineages"
+                              description="Conceptualized and created Django database to efficiently query, analyze, and store articles crawled by Consili "
                               image={django}
                               link={
-                                "https://docs.secoda.co/integrations/databases/microsoft-sql-server/"
+                                "https://consili.io"
                               }
-                              buttonLabel="View in Documentation"
+                              buttonLabel="View Consili"
                             />
                           </Group>
                         </Card>
@@ -546,11 +585,9 @@ the car's movement"
                 <Card
                   style={{
                     alignContent: "center",
-                    marginRight: "auto",
                     height: "40%",
                     borderRadius: "24px",
                     padding: "8px",
-                    display: "flex",
                   }}
                   isBlurred>
                   <Box
@@ -563,7 +600,6 @@ the car's movement"
                     <Card
                       style={{
                         textAlign: "left",
-                        marginRight: "auto",
                         height: "40%",
                         borderRadius: "24px",
                         padding: "8px",
@@ -578,28 +614,48 @@ the car's movement"
                           }}>
                           Languages:
                         </h4>
-                        <div style={{ fontStyle: "italic", fontSize: "18px" }}>
-                          TypeScript, Python, C++, Java, C, Javascript, HTML,
-                          CSS, SQL, MSSQL, VHDL
-                        </div>
+                        <div style={{ fontStyle: "italic", fontSize: "30px" }}>
+  <Code style={{ fontStyle: "italic", fontSize: "65px" }}>
+    <Group><SiJavascript /><SiPython /><SiCplusplus />
+    <SiTypescript /><SiC /><FaJava /><SiGo /><SiTerraform /><SiSwift /><SiHtml5 />
+    <TbSql />
+    <SiCss3 />
+    </Group>
+  </Code>
+</div>
+
                         <h4
                           style={{
                             alignSelf: "left",
                             padding: 0,
                             fontWeight: 900,
                           }}>
-                          Tools and Frameworks:
+                          Frameworks:
                         </h4>
-                        <div
+                        <div style={{ fontStyle: "italic", fontSize: "30px" }}>
+                        <Code style={{ fontStyle: "italic", fontSize: "65px" }}>
+    <Group>
+    <SiReact /><SiMongodb /><SiDjango /><SiAmazonaws /><SiNodedotjs /><SiPostgresql /><SiDocker /><SiTensorflow /><SiFirebase /><SiCelery /><SiElasticsearch />
+    <BiLogoVuejs />
+    </Group>
+  </Code>
+</div>
+<h4
                           style={{
-                            fontStyle: "italic",
-                            fontSize: "18px",
+                            alignSelf: "left",
                             padding: 0,
+                            fontWeight: 900,
                           }}>
-                          React, MongoDB, Django, Firebase, Tensorflow, Node.js,
-                          Vite, Postgres, Docker, Tensorflow, REST API's, and
-                          more!
-                        </div>
+                          Developer Tools:
+                        </h4>
+                        <div style={{ fontStyle: "italic", fontSize: "30px" }}>
+                        <Code style={{ fontStyle: "italic", fontSize: "65px" }}>
+    <Group>
+  <SiGit /><SiGithub /><SiVisualstudiocode /><SiTrello /><SiPytest /><SiJira /><SiPowerbi /><SiLinear /><SiGithubactions /><SiGooglecolab />
+  </Group>
+  </Code>
+</div>
+
                       </Stack>
                     </Card>
                   </Box>
@@ -670,7 +726,7 @@ the car's movement"
                       padding: "8px",
                       fontWeight: 1000,
                     }}>
-                    📞 Contact Me{" "}
+                    📞 Contact Me!{" "}
                   </h2>
                   <Card
                     style={{
