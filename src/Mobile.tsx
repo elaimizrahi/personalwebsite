@@ -1,9 +1,9 @@
 import "./App.css";
 import profile from "./images/IMG_5423.png";
 import secodaLogo from "./images/secoda.png";
-import { Group, Stack, Box, List, Text } from "@mantine/core";
+import { Group, Stack, Box,Text } from "@mantine/core";
 import commandPalette from "./images/commandPalette.png";
-import CardItem from "./components/CardItem";
+import MobileCardItem from "./components/MobileCardItem";
 import Jira from "./images/Jira.png";
 import mssql from "./images/mssql.png";
 import powerbi from "./images/powerbi.png";
@@ -26,14 +26,18 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useScroll } from "framer-motion";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import GitHubCalendar from "react-github-calendar";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-import { Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
-
+import {
+  Navbar,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+} from "@nextui-org/react";
 import React, { useState, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { Tabs, Tab, Card, CardBody, Code } from "@nextui-org/react";
+import {  Card, Code } from "@nextui-org/react";
 import {
   SiTypescript,
   SiJavascript,
@@ -72,22 +76,18 @@ import {
 import { FaJava } from "react-icons/fa";
 import { TbSql } from "react-icons/tb";
 import { BiLogoVuejs } from "react-icons/bi";
+import {isMobile} from 'react-device-detect';
 
 function App() {
-  const [page, setPage] = useState("home"); // State to manage the current page
 
   const mailto = "mailto:emizrahi@uwaterloo.ca";
-  const aboutRef = useRef(null);
 
   const scrollToSection = (sectionKey: React.Key) => {
     const element = document.getElementById(`${sectionKey}`); // Your target element
     const headerOffset = 75;
-    console.log(element)
     if (element) {
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.scrollY - headerOffset;
-        console.log(elementPosition)
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -98,71 +98,93 @@ function App() {
   const secodaref = useRef(null);
   const { scrollYProgress: secodascrollYProgress } = useScroll({
     target: secodaref,
-    offset: ["-10", "-1.5"],
-  });
+    offset: ["-4", "-0.5"],  });
   const avanteref = useRef(null);
   const { scrollYProgress: avantescrollYProgress } = useScroll({
     target: avanteref,
-    offset: ["-10", "-1.5"],
-  });
+    offset: ["-4", "-0.5"],  });
   const uwaftref = useRef(null);
   const { scrollYProgress: uwaftscrollYProgress } = useScroll({
     target: uwaftref,
-    offset: ["-10", "-1.5"],
-  });
+    offset: ["-4", "-0.5"],  });
 
   return (
     <div>
       <div>
         <div className="App">
           <header className="App-header">
-            <div style={{position: 'fixed', top: 0, left: 0, width: '100%', justifyContent: 'center', zIndex: 999 }}>
-          <Navbar isBordered style={{marginLeft: 'auto'}}>
-          <NavbarContent className=" sm:flex gap-4" justify="center" style={{margin: 'auto'}}>
-        <NavbarItem style={{margin: 'auto'}}>
-          <Link color="foreground" href="#" style={{margin: 'auto'}} id='one' onClick={() => scrollToSection('about')}>
-            About
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page" style={{margin: 'auto'}} id='two' onClick={() => scrollToSection('experience')}>
-            Experience
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#" style={{margin: 'auto'}} id='three' onClick={() => scrollToSection('projects')}>
-            Projects
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#" style={{margin: 'auto'}} onClick={() => scrollToSection('skills')}>
-            Skills
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#" style={{marginRight: 'auto'}} onClick={() => scrollToSection('contact')}>
-            Contact
-          </Link>
-        </NavbarItem>
-        </NavbarContent>
-    </Navbar>
-    </div>
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                justifyContent: "center",
+                zIndex: 999,
+              }}>
+              <Navbar isBordered style={{ marginLeft: "auto" }}>
+                <NavbarContent
+                  className=" sm:flex gap-4"
+                  justify="center"
+                  style={{ margin: "auto" }}>
+                  <NavbarItem style={{ margin: "auto" }}>
+                    <Link
+                      color="foreground"
+                      style={{ margin: "auto" }}
+                      onClick={() => scrollToSection("about")}>
+                      About
+                    </Link>
+                  </NavbarItem>
+                  <NavbarItem isActive>
+                    <Link
+                      aria-current="page"
+                      style={{ margin: "auto" }}
+                      onClick={() => scrollToSection("experience")}>
+                      Experience
+                    </Link>
+                  </NavbarItem>
+                  <NavbarItem>
+                    <Link
+                      color="foreground"
+                      style={{ margin: "auto" }}
+                      onClick={() => scrollToSection("projects")}>
+                      Projects
+                    </Link>
+                  </NavbarItem>
+                  <NavbarItem>
+                    <Link
+                      color="foreground"
+                      style={{ margin: "auto" }}
+                      onClick={() => scrollToSection("skills")}>
+                      Skills
+                    </Link>
+                  </NavbarItem>
+                  <NavbarItem>
+                    <Link
+                      color="foreground"
+                      style={{ marginRight: "auto" }}
+                      onClick={() => scrollToSection("contact")}>
+                      Contact
+                    </Link>
+                  </NavbarItem>
+                </NavbarContent>
+              </Navbar>
+            </div>
             <section id="about" />
 
             <Stack
-              style={{ paddingTop: "75px", width: "70%", justify: "center" }}>
+              style={{ paddingTop: "75px", width: "85%", justify: "center", alignContent: 'center' }}>
               <Group style={{ paddingBottom: "50px" }}>
                 <img
                   src={profile}
                   style={{
-                    width: 300,
-                    height: 300,
+                    width: "20rem",
                     borderRadius: "50%",
                     border: "2px solid",
                   }}
                   alt="Profile"></img>
                 <Stack ml={25}>
-                  <Text fw={500} fz={55} mr="auto">
+                  <Text fw={500} fz={"2rem"} mr="auto">
                     Hello, I'm{" "}
                   </Text>
                   <TypeAnimation
@@ -178,7 +200,7 @@ function App() {
                     speed={50}
                     deletionSpeed={70}
                     style={{
-                      fontSize: "50px",
+                      fontSize: "2rem",
                       fontWeight: "bold",
                       marginRight: "auto",
                     }}
@@ -249,8 +271,10 @@ function App() {
                 style={{
                   textAlign: "center",
                   marginRight: "auto",
-                  width: "100%",
+                  marginLeft: "auto",
                   height: "40%",
+                  borderRadius: "24px",
+                  padding: "8px",
                 }}
                 isBlurred>
                 <h2
@@ -321,7 +345,7 @@ function App() {
                               justifyContent: "center",
                               alignItems: "center",
                             }}>
-                            <CardItem
+                            <MobileCardItem
                               title="Consili.io"
                               type="feature"
                               description="Directed Consili product to generate summarized news articles with React, Django, Terraform, and AWS, curating personalized news timelines"
@@ -329,7 +353,7 @@ function App() {
                               link={"https://consili.io"}
                               buttonLabel="View Consili"
                             />
-                            <CardItem
+                            <MobileCardItem
                               title="News Analysis"
                               type="feature"
                               description="Levaraged and trained AI Models to summarize and analyze articles, delivering their contents and rationales to
@@ -338,7 +362,7 @@ function App() {
                               link={"https://consili.io"}
                               buttonLabel="View Consili"
                             />
-                            <CardItem
+                            <MobileCardItem
                               title="Infrastructure"
                               type="feature"
                               description="Implemented an AWS, Terraform, and Django backend to provide enhanced infrastructure for Consili's deployment and architecture"
@@ -348,7 +372,7 @@ function App() {
                               }
                               buttonLabel="View infrastructure"
                             />
-                            <CardItem
+                            <MobileCardItem
                               title="Django Database"
                               type="feature"
                               description="Conceptualized and created Django database to efficiently query, analyze, and store articles crawled by Consili "
@@ -415,7 +439,7 @@ function App() {
                           </Group>
 
                           <Group style={{ alignContent: "center" }}>
-                            <CardItem
+                            <MobileCardItem
                               title="Command Palette"
                               type="feature"
                               description="With the command palette feature, users are able to quickly search through their workspace, create new resources, and navigate through Secoda."
@@ -423,7 +447,7 @@ function App() {
                               link={"https://docs.secoda.co/features/search"}
                               buttonLabel="View in Documentation"
                             />
-                            <CardItem
+                            <MobileCardItem
                               title="Jira Integration"
                               type="feature"
                               description="Secoda's Jira integration allows for users to pull their Jira issues into Secoda as questions, allowing for a seamless connection between the two workspaces"
@@ -433,7 +457,7 @@ function App() {
                               }
                               buttonLabel="View in Documentation"
                             />
-                            <CardItem
+                            <MobileCardItem
                               title="Power BI Authentication"
                               type="improvement"
                               description="Developed new Power BI Authentication to enable non-admin users to extract reports, datasets, and workflows, importing them into Secoda"
@@ -443,7 +467,7 @@ function App() {
                               }
                               buttonLabel="View in Documentation"
                             />
-                            <CardItem
+                            <MobileCardItem
                               title="MS SQL Stored Procedures"
                               type="feature"
                               description="Developed new MS SQL Stored Procedures to extract lineage MS SQL table's lineage, assigning  responsible queries to their respective lineages"
@@ -507,7 +531,7 @@ function App() {
                               </Stack>
                             </Group>
 
-                            <CardItem
+                            <MobileCardItem
                               title="Software Developer"
                               type="feature"
                               description="Researched methods of creating 3D models of automotive
@@ -538,7 +562,7 @@ function App() {
                   🛠️ Projects{" "}
                 </h2>
                 <Group style={{ width: "100%", justifyContent: "center" }}>
-                  <CardItem
+                  <MobileCardItem
                     title="Gotchi.ai"
                     description="gotchi.ai functions as a virtual pet assistant, allowing users to interact with and care for a digital pet through activities like feeding and monitoring its well-being. In addition, it also provides features that support educational study aids like a Pomodoro timer, an interactive voice-activated AI chat, an AI-powered text summarizer, memo pads, and more.                "
                     type="UofTHacks 11"
@@ -546,7 +570,7 @@ function App() {
                     buttonLabel="View Devpost"
                     image={gotchi}
                   />
-                  <CardItem
+                  <MobileCardItem
                     title="Self Driving RC Car"
                     description="Connected a Raspberry Pi Zero to the Raspberry Pi OS, TensorFlow, and Python, detecting objects using their location to control
 the car's movement"
@@ -555,7 +579,7 @@ the car's movement"
                     buttonLabel="View Demo"
                     image={goose}
                   />
-                  <CardItem
+                  <MobileCardItem
                     title="Encore"
                     description="Developed React application to pull user's current listening data from spotify, allowing the user to then review and save each song. Used the Spotify API, React, and MongoDB."
                     type="Personal Project"
@@ -563,7 +587,7 @@ the car's movement"
                     buttonLabel="Github"
                     image={spotify}
                   />{" "}
-                  <CardItem
+                  <MobileCardItem
                     title="MemoryMap (WIP)"
                     description="Developed web app to create a ”Memory Map” for users using a React and Typescript front end and a MongoDB and Python
                   back‑end"
@@ -624,7 +648,7 @@ the car's movement"
                         </h4>
                         <div style={{ fontStyle: "italic", fontSize: "30px" }}>
                           <Code
-                            style={{ fontStyle: "italic", fontSize: "65px" }}>
+                            style={{ fontStyle: "italic", fontSize: "30px" }}>
                             <Group>
                               <SiJavascript />
                               <SiPython />
@@ -652,7 +676,7 @@ the car's movement"
                         </h4>
                         <div style={{ fontStyle: "italic", fontSize: "30px" }}>
                           <Code
-                            style={{ fontStyle: "italic", fontSize: "65px" }}>
+                            style={{ fontStyle: "italic", fontSize: "30px" }}>
                             <Group>
                               <SiReact />
                               <SiMongodb />
@@ -679,7 +703,7 @@ the car's movement"
                         </h4>
                         <div style={{ fontStyle: "italic", fontSize: "30px" }}>
                           <Code
-                            style={{ fontStyle: "italic", fontSize: "65px" }}>
+                            style={{ fontStyle: "italic", fontSize: "30px" }}>
                             <Group>
                               <SiGit />
                               <SiGithub />
@@ -743,6 +767,7 @@ the car's movement"
                         borderRadius: "12px",
                         padding: "8px",
                         marginBottom: "10px",
+                        width: "100%",
                       }}>
                       <GitHubCalendar
                         username="elaimizrahi"
@@ -794,6 +819,8 @@ the car's movement"
                     </Group>
                   </Card>
                 </Card>
+                {isMobile &&
+                <div style={{marginBottom: '40%'}}/>}
               </Stack>
             </Stack>
           </header>

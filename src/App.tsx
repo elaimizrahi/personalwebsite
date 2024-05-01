@@ -1,7 +1,7 @@
 import "./App.css";
 import profile from "./images/IMG_5423.png";
 import secodaLogo from "./images/secoda.png";
-import { Group, Stack, Box, List, Text } from "@mantine/core";
+import { Group, Stack, Box, Text } from "@mantine/core";
 import commandPalette from "./images/commandPalette.png";
 import CardItem from "./components/CardItem";
 import Jira from "./images/Jira.png";
@@ -26,12 +26,12 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useScroll } from "framer-motion";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import GitHubCalendar from "react-github-calendar";
 
 import React, { useState, useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { Tabs, Tab, Card, CardBody, Button, Code } from "@nextui-org/react";
+import { Tabs, Tab, Card, Button, Code } from "@nextui-org/react";
 import {
   SiTypescript,
   SiJavascript,
@@ -65,17 +65,15 @@ import {
   SiGithubactions,
   SiGooglecolab,
   SiFigma,
-  SiMicrosoftazure
+  SiMicrosoftazure,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbSql } from "react-icons/tb";
 import { BiLogoVuejs } from "react-icons/bi";
 
 function App() {
-  const [page, setPage] = useState("home"); // State to manage the current page
 
   const mailto = "mailto:emizrahi@uwaterloo.ca";
-  const aboutRef = useRef(null);
 
   const scrollToSection = (sectionKey: React.Key) => {
     const element = document.getElementById(`${sectionKey}`); // Your target element
@@ -151,7 +149,7 @@ function App() {
                   }}
                   alt="Profile"></img>
                 <Stack ml={25}>
-                  <Text fw={500} fz={55} mr="auto">
+                  <Text fw={500} fz={"2rem"} mr="auto">
                     Hello, I'm{" "}
                   </Text>
                   <TypeAnimation
@@ -167,7 +165,7 @@ function App() {
                     speed={50}
                     deletionSpeed={70}
                     style={{
-                      fontSize: "50px",
+                      fontSize: "2rem",
                       fontWeight: "bold",
                       marginRight: "auto",
                     }}
@@ -680,8 +678,8 @@ the car's movement"
                               <SiLinear />
                               <SiGithubactions />
                               <SiGooglecolab />
-                              <SiFigma/>
-  <SiMicrosoftazure/>
+                              <SiFigma />
+                              <SiMicrosoftazure />
                             </Group>
                           </Code>
                         </div>

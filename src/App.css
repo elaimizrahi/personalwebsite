@@ -3,6 +3,13 @@
 
 }
 
+.App-mobile {
+  text-align: center;
+  background-image: url('./images/background1.png'); /* Add background image */
+  background-size: cover; /* Set background size to cover */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-attachment: fixed; /* Fixed background image */
+}
 .image {
   position:absolute;
   width:100%; 
