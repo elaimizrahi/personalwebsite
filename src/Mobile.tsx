@@ -35,7 +35,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import React, {  useRef } from "react";
+import React, {  useRef, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Card, Code } from "@nextui-org/react";
 import {
@@ -79,11 +79,13 @@ import { BiLogoVuejs } from "react-icons/bi";
 import { isMobile } from "react-device-detect";
 
 function App() {
+    const [page, setPage] = useState('about')
   const mailto = "mailto:emizrahi@uwaterloo.ca";
 
-  const scrollToSection = (sectionKey: React.Key) => {
+  const scrollToSection = (sectionKey: string) => {
     const element = document.getElementById(`${sectionKey}`); // Your target element
     const headerOffset = 75;
+    setPage(sectionKey)
     if (element) {
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
@@ -131,40 +133,40 @@ function App() {
                   style={{ margin: "auto" }}>
                   <NavbarItem style={{ margin: "auto" }}>
                     <Link
-                      color="foreground"
-                      style={{ margin: "auto" }}
+                      color={page === 'about' ? "primary" : "foreground"}
+                      style={{ margin: "auto", fontWeight: page === 'about' ? "bold" : 'normal'}}
                       onClick={() => scrollToSection("about")}>
                       About
                     </Link>
                   </NavbarItem>
                   <NavbarItem isActive>
                     <Link
-                      aria-current="page"
-                      style={{ margin: "auto" }}
+                      color={page === 'experience' ? "primary" : "foreground"}
+                      style={{ margin: "auto", fontWeight: page === 'experience' ? "bold" : 'normal'}}
                       onClick={() => scrollToSection("experience")}>
                       Experience
                     </Link>
                   </NavbarItem>
                   <NavbarItem>
                     <Link
-                      color="foreground"
-                      style={{ margin: "auto" }}
+                      color={page === 'projects' ? "primary" : "foreground"}
+                      style={{ margin: "auto", fontWeight: page === 'projects' ? "bold" : 'normal'}}
                       onClick={() => scrollToSection("projects")}>
                       Projects
                     </Link>
                   </NavbarItem>
                   <NavbarItem>
                     <Link
-                      color="foreground"
-                      style={{ margin: "auto" }}
+                      color={page === 'skills' ? "primary" : "foreground"}
+                      style={{ margin: "auto", fontWeight: page === 'skills' ? "bold" : 'normal'}}
                       onClick={() => scrollToSection("skills")}>
                       Skills
                     </Link>
                   </NavbarItem>
                   <NavbarItem>
                     <Link
-                      color="foreground"
-                      style={{ marginRight: "auto" }}
+                      color={page === 'contact' ? "primary" : "foreground"}
+                      style={{ margin: "auto", fontWeight: page === 'contact' ? "bold" : 'normal'}}
                       onClick={() => scrollToSection("contact")}>
                       Contact
                     </Link>
