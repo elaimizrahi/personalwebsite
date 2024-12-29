@@ -172,12 +172,15 @@ function App() {
                 alignContent: "center",
               }}>
               <Group style={{ paddingBottom: "50px" }}>
-                <img
+              <img
                   src={profile}
                   style={{
-                    width: "20rem",
-                    borderRadius: "50%",
-                    border: "2px solid",
+                    width: '80%',
+                    height: '80%',
+                    borderRadius: "5%", 
+                    border: "5px solid white",
+                    margin: "0 auto",
+                    display: "block"
                   }}
                   alt="Profile"></img>
                 <Stack ml={25}>
