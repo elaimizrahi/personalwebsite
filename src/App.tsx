@@ -663,7 +663,7 @@ the car's movement"
                           style={{
                             alignSelf: "left",
                             paddingTop: 0,
-                            fontSize: "2rem",
+                            fontSize: "1.5rem",
                             fontWeight: 900,
                           }}>
                           Languages:
@@ -692,7 +692,7 @@ the car's movement"
                           style={{
                             alignSelf: "left",
                             padding: 0,   
-                            fontSize: "2rem",
+                            fontSize: "1.5rem",
                             fontWeight: 900,
                           }}>
                           Frameworks:
@@ -720,7 +720,7 @@ the car's movement"
                           style={{
                             alignSelf: "left",
                             padding: 0,
-                            fontSize: "2rem",
+                            fontSize: "1.5rem",
                             fontWeight: 900,
                           }}>
                           Developer Tools:
