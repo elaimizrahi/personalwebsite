@@ -4,8 +4,6 @@ import {
   Card,
   CardBody,
 } from "@nextui-org/react";
-import { motion, Variants } from "framer-motion";
-import { useScroll } from "framer-motion";
 
 interface CardItemProps {
   title: string;
@@ -28,37 +26,20 @@ const CardItem: React.FC<CardItemProps> = ({
     type === "feature" ? "blue" : type === "improvement" ? "pink" : "orange";
   const [isInView,] = useState(false);
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["-10", "-1.5"],
-  });
-  console.log(scrollYProgress);
-  const cardVariants: Variants = {
-    offscreen: {},
-    onscreen: {},
-  };
   return (
-    <div ref={ref}>
-      <motion.div
-        className="card-container"
-        initial="offscreen"
-        whileInView="onscreen"
-        style={{ scale: scrollYProgress }}>
-        <motion.div className="card" variants={cardVariants}>
+    <div ref={ref} style={{margin: "25px"}}>
           <Card
             shadow="sm"
             radius="md"
             style={{
-              width: "90%",
-              margin: "25px",
-              padding: "1%",
-              marginRight: "auto",
+              width: "100%",
+              padding: "2%",
             }}
             className={isInView ? "exit-effect" : "exit-effect smaller"}
             isBlurred
             id={`myObject - ${title}`}>
             <CardBody>
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div style={{ display: "flex", flexDirection: "row", gap: "3%" }}>
                 <img
                   src={image}
                   alt=""
@@ -70,52 +51,52 @@ const CardItem: React.FC<CardItemProps> = ({
                 />
                 <div
                   style={{
-                    marginLeft: "2%",
+                    flex: 1,
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
                   }}>
                   <div
                     style={{
-                      marginLeft: "2%",
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: "1rem"
                     }}>
-                    <Text fw={500}>{title}</Text>
-                    <Badge color={typeColor} variant="light">
+                    <Text fw={500} style={{fontSize: "2rem"}}>{title}</Text>
+                    <Badge color={typeColor} variant="light" size="xl">
                       {type}
                     </Badge>
                   </div>
                   <div
                     style={{
-                      marginLeft: "2%",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "space-between",
+                      height: "100%",
                     }}>
-                    <Text size="sm" color="dimmed" ta="left">
+                    <div style={{fontSize: '1.5rem', color: 'lightgray'}}>
                       {description}
-                    </Text>
+                    </div>
 
-                    <Button
+                    {link.length > 0 && <Button
                       variant="light"
                       color="blue"
                       fullWidth
                       mt="md"
                       radius="md"
+                      size="xl"
                       onClick={() => {
                         window.open(link);
                       }}>
                       {buttonLabel}
-                    </Button>
+                    </Button>}
                   </div>
                 </div>
               </div>
             </CardBody>
           </Card>
-        </motion.div>
-      </motion.div>
     </div>
   );
 };

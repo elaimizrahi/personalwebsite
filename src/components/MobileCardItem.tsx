@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Text, Badge, Button } from "@mantine/core";
 import { Card, CardBody } from "@nextui-org/react";
-import { motion, Variants } from "framer-motion";
-import { useScroll } from "framer-motion";
 
 interface CardItemProps {
   title: string;
@@ -25,23 +23,8 @@ const MobileCardItem: React.FC<CardItemProps> = ({
     type === "feature" ? "blue" : type === "improvement" ? "pink" : "orange";
   const [isInView,] = useState(false);
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["-4", "-0.5"],
-  });
-  console.log(scrollYProgress);
-  const cardVariants: Variants = {
-    offscreen: {},
-    onscreen: {},
-  };
   return (
     <div ref={ref}>
-      <motion.div
-        className="card-container"
-        initial="offscreen"
-        whileInView="onscreen"
-        style={{ scale: scrollYProgress }}>
-        <motion.div className="card" variants={cardVariants}>
           <Card
             shadow="sm"
             radius="md"
@@ -111,8 +94,6 @@ const MobileCardItem: React.FC<CardItemProps> = ({
               </div>
             </CardBody>
           </Card>
-        </motion.div>
-      </motion.div>
     </div>
   );
 };

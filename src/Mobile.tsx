@@ -25,8 +25,6 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { useScroll } from "framer-motion";
-import { motion } from "framer-motion";
 import GitHubCalendar from "react-github-calendar";
 import {
   Navbar,
@@ -35,7 +33,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import React, {  useRef, useState } from "react";
+import React, {   useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Card, Code } from "@nextui-org/react";
 import {
@@ -77,6 +75,11 @@ import { FaJava } from "react-icons/fa";
 import { TbSql } from "react-icons/tb";
 import { BiLogoVuejs } from "react-icons/bi";
 import { isMobile } from "react-device-detect";
+import runql from "./images/runQL-logo.png";
+import snowflakedatabricks from "./images/snowflakedatabricks.png";
+import opensearch from "./images/opensearch.png";
+import ec2 from "./images/ec2.png";
+import aichart from "./images/aichart.png";
 
 function App() {
     const [page, setPage] = useState('about')
@@ -96,21 +99,6 @@ function App() {
       });
     }
   };
-  const secodaref = useRef(null);
-  const { scrollYProgress: secodascrollYProgress } = useScroll({
-    target: secodaref,
-    offset: ["-4", "-0.5"],
-  });
-  const avanteref = useRef(null);
-  const { scrollYProgress: avantescrollYProgress } = useScroll({
-    target: avanteref,
-    offset: ["-4", "-0.5"],
-  });
-  const uwaftref = useRef(null);
-  const { scrollYProgress: uwaftscrollYProgress } = useScroll({
-    target: uwaftref,
-    offset: ["-4", "-0.5"],
-  });
 
   return (
     <div>
@@ -295,13 +283,95 @@ function App() {
                   }}>
                   👨‍💻 Experience{" "}
                 </h2>
-                <div ref={avanteref}>
-                  <motion.div
-                    className="card-container"
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    style={{ scale: avantescrollYProgress }}>
-                    <motion.div className="card">
+                <div >
+                      <Box
+                        ta="center"
+                        p="xl"
+                        style={{ borderRadius: "md", justifyItems: "center" }}
+                        mt={0}>
+                        <Card
+                          style={{
+                            textAlign: "center",
+                            height: "40%",
+                            marginRight: "auto",
+                            borderRadius: "24px",
+                            padding: "8px",
+                            alignContent: "center",
+                            justifyItems: "center",
+                          }}
+                          isBlurred>
+                          <Group>
+                          <img src={runql} alt="RunQL Logo" style={{
+                              width: 300,
+                              height: 100,
+                              margin: '1%',
+                            }} />
+                            <div>
+                              <h4
+                                style={{
+                                  marginBottom: 0,
+                                  textAlign: "left",
+                                  fontWeight: 1000,
+                                }}>
+                                RunQL
+                              </h4>
+                              <h6
+                                style={{
+                                  marginTop: 0,
+                                  textAlign: "left",
+                                  color: "lightgray",
+                                }}>
+                                Software Engineer Intern
+                              </h6>
+                            </div>
+                          </Group>
+
+                          <Group
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}>
+                            
+                          <Stack>
+                            <MobileCardItem
+                              title="Data Integration"
+                              type="feature"
+                              description="Enabled two-way Snowflake and Databricks data integration, persisting data using React and Typescript"
+                              image={snowflakedatabricks}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                            <MobileCardItem
+                              title="AI Charts"
+                              type="feature"
+                              description="Implemented real-time AI-generated charts from query data, processing 10000+ rows while ensuring data privacy"
+                              image={aichart}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                            <MobileCardItem
+                              title="Search Optimization"
+                              type="feature"
+                              description="Extracted query metadata using AI Models to enable faceted Opensearch filters, reducing search time by 50%"
+                              image={opensearch}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                            <MobileCardItem
+                              title="Staging Environment"
+                              type="feature"
+                              description="Introduced staging environment using AWS, Typescript, and Docker, reducing production bugs by 75%"
+                              image={ec2}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                          </Stack>
+                          </Group>
+                        </Card>
+                      </Box>
+                </div>
+                <div>
                       <Box
                         ta="center"
                         p="xl"
@@ -392,17 +462,9 @@ function App() {
                           </Group>
                         </Card>
                       </Box>
-                    </motion.div>
-                  </motion.div>
                 </div>
                 <Group></Group>
-                <div ref={secodaref}>
-                  <motion.div
-                    className="card-container"
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    style={{ scale: secodascrollYProgress }}>
-                    <motion.div className="card">
+                <div>
                       <Box
                         ta="center"
                         p="xl"
@@ -489,17 +551,9 @@ function App() {
                           </Group>
                         </Card>
                       </Box>
-                    </motion.div>
-                  </motion.div>
                 </div>
                 <Group>
-                  <div ref={uwaftref}>
-                    <motion.div
-                      className="card-container"
-                      initial="offscreen"
-                      whileInView="onscreen"
-                      style={{ scale: uwaftscrollYProgress }}>
-                      <motion.div className="card">
+                  <div >
                         <Box
                           ta="center"
                           p="xl"
@@ -551,8 +605,6 @@ function App() {
                             />
                           </Card>
                         </Box>
-                      </motion.div>
-                    </motion.div>
                   </div>
                 </Group>
               </Card>
@@ -812,17 +864,17 @@ the car's movement"
                     isBlurred>
                     <Group style={{ justifyContent: "space-around" }}>
                       <a href={mailto}>
-                        <img src={mail} alt="" height={50} width={75} />
+                        <img src={mail} alt="" height={40} width={60} />
                       </a>
                       <a href={"https://github.com/elaimizrahi"}>
-                        <img src={github} alt="" height={60} width={60} />
+                        <img src={github} alt="" height={45} width={45} />
                       </a>
                       <a href={"https://linkedin.com/in/elai-mizrahi"}>
-                        <img src={linkedin} alt="" height={60} width={60} />
+                        <img src={linkedin} alt="" height={45} width={45} />
                       </a>
                       <a href={"tel:2269882795"}>
                         <PhoneIcon
-                          style={{ color: "white", width: 65, height: 65 }}
+                          style={{ color: "white", width: 50, height: 50 }}
                         />
                       </a>
                     </Group>

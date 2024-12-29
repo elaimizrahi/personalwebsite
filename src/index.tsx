@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { NextUIProvider } from "@nextui-org/react";
-import backgroundImage from "./images/background1.png";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,16 +14,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <NextUIProvider>
-      <img
-        src={backgroundImage}
-        alt="background"
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "fixed",
-          zIndex: -1,
-        }}></img>
-
       <main className="dark text-foreground">
         <MantineProvider>
           <Route />

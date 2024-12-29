@@ -1,11 +1,11 @@
 .App {
   text-align: center;
-
+  background-color: rgb(215, 184, 165);
+  color: rgb(48, 46, 46) !important;
 }
 
 .App-mobile {
   text-align: center;
-  background-image: url('./images/background1.png'); /* Add background image */
   background-size: cover; /* Set background size to cover */
   background-repeat: no-repeat; /* Prevent background image from repeating */
   background-attachment: fixed; /* Fixed background image */
@@ -24,13 +24,14 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 30s linear;
   }
 }
 
 .App-header {
   background-color: transparent; /* Set background color to transparent */
   min-height: 100vh;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

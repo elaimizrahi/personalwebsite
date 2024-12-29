@@ -25,9 +25,13 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { useScroll } from "framer-motion";
-import { motion } from "framer-motion";
+import runql from "./images/runQL-logo.png";
+import snowflakedatabricks from "./images/snowflakedatabricks.png";
+import opensearch from "./images/opensearch.png";
+import ec2 from "./images/ec2.png";
+import aichart from "./images/aichart.png";
 import GitHubCalendar from "react-github-calendar";
+import "typeface-roboto-mono";
 
 import React, {  useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
@@ -89,27 +93,20 @@ function App() {
     }
   };
   const secodaref = useRef(null);
-  const { scrollYProgress: secodascrollYProgress } = useScroll({
-    target: secodaref,
-    offset: ["-10", "-1.5"],
-  });
   const avanteref = useRef(null);
-  const { scrollYProgress: avantescrollYProgress } = useScroll({
-    target: avanteref,
-    offset: ["-10", "-1.5"],
-  });
+  const runqlref = useRef(null);
   const uwaftref = useRef(null);
-  const { scrollYProgress: uwaftscrollYProgress } = useScroll({
-    target: uwaftref,
-    offset: ["-10", "-1.5"],
-  });
 
   return (
-    <div>
+    <div style={{fontFamily: "Roboto Mono"}}>
       <div>
         <div className="App">
           <header className="App-header">
-            <div style={{ position: "fixed", top: 25, zIndex: 999 }}>
+            <div style={{ 
+              position: "fixed", 
+              top: 25, 
+              zIndex: 999, 
+            }}>
               <Tabs
                 color={"default"}
                 aria-label="Tabs colors"
@@ -117,19 +114,16 @@ function App() {
                 variant="solid"
                 style={{
                   color: "white",
-                  padding: "10px",
-                  width: "100%",
-                  height: "20%",
                 }}
                 onSelectionChange={(tab) => scrollToSection(tab)}>
-                <Tab key="about" title="About Me" style={{ margin: "3px" }} />
-                <Tab key="experience" title="Experience" />
-                <Tab key="projects" title="Projects" />
-                <Tab key="skills" title="Skills" />
+                <Tab key="about" title="About Me" style={{ margin: "10px", fontSize: '25px' }} />
+                <Tab key="experience" title="Experience" style={{ margin: "10px", fontSize: '25px' }} />
+                <Tab key="projects" title="Projects" style={{ margin: "10px", fontSize: '25px' }} />
+                <Tab key="skills" title="Skills" style={{ margin: "10px", fontSize: '25px' }} />
                 <Tab
                   key="contact"
                   title="Contact Me"
-                  style={{ margin: "3px" }}
+                  style={{ margin: "10px", fontSize: '25px' }}
                 />
               </Tabs>
             </div>
@@ -141,14 +135,14 @@ function App() {
                 <img
                   src={profile}
                   style={{
-                    width: 300,
-                    height: 300,
-                    borderRadius: "50%",
-                    border: "2px solid",
+                    width: 400,
+                    height: 400,
+                    borderRadius: "5%",
+                    border: "5px solid white",
                   }}
                   alt="Profile"></img>
                 <Stack ml={25}>
-                  <Text fw={500} fz={"2rem"} mr="auto">
+                  <Text fw={500} fz={"5rem"} mr="auto">
                     Hello, I'm{" "}
                   </Text>
                   <TypeAnimation
@@ -161,22 +155,23 @@ function App() {
                       1000,
                     ]}
                     wrapper="span"
-                    speed={50}
-                    deletionSpeed={70}
+                    speed={20}
+                    deletionSpeed={50}
                     style={{
-                      fontSize: "2rem",
+                      fontSize: "5rem",
                       fontWeight: "bold",
                       marginRight: "auto",
                     }}
                     repeat={Infinity}
                   />
                   <Group style={{ marginRight: "auto", marginTop: "10px" }}>
-                    <a href="./Elai_Mizrahi_Resume.pdf" target="_blank">
-                      <Button style={{ backgroundColor: "#7828C8" }}>
-                        <InsertDriveFileIcon />
-                        Resume
-                      </Button>
-                    </a>
+                  <Button 
+                    onClick={() => window.open("./Elai_Mizrahi_Resume.pdf", "_blank")}
+                    style={{ backgroundColor: "#7828C8", fontSize: "1.5rem", padding: "1.5rem 2rem"}}>
+                    <InsertDriveFileIcon style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
+                    Resume
+                  </Button>
+
                     <Button
                       onClick={() =>
                         window.open(
@@ -185,10 +180,12 @@ function App() {
                         )
                       }
                       style={{
-                        marginRight: "auto",
+                        marginRight: "auto", 
                         backgroundColor: "#004493",
+                        fontSize: "1.5rem",
+                        padding: "1.5rem 2rem"
                       }}>
-                      <LinkedInIcon />
+                      <LinkedInIcon style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
                       Linkedin
                     </Button>
                     <Button
@@ -197,29 +194,35 @@ function App() {
                       }
                       style={{
                         marginRight: "auto",
-                        backgroundColor: "#18181B",
+                        backgroundColor: "#18181B", 
+                        fontSize: "1.5rem",
+                          padding: "1.5rem 2rem"
                       }}>
-                      <GitHubIcon />
+                      <GitHubIcon style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
                       Github
                     </Button>
                   </Group>
                 </Stack>
               </Group>
-              <p style={{ fontWeight: "bold" }}>
+              <p style={{ fontWeight: "bold", fontSize: "4rem" }}>
                 Software engineer, Student, and Aspiring founder
               </p>
+              <p></p>
+              <p></p>
               <div>
-                I am in my second year of{" "}
+                I am in my third year of{" "}
                 <span style={{ fontWeight: "bold" }}>Software Engineering</span>{" "}
                 at the University of Waterloo with a specialization in
                 <span style={{ fontWeight: "bold" }}>
                   {" "}
                   Artificial Intelligence
                 </span>
-                . I have just completed co-op terms at Avante IO and Secoda
-                where I developed full-stack features. I am looking for a{" "}
+                . I have completed co-op terms at <a href="https://runql.com" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }} rel="noreferrer">RunQL</a>,{" "}
+                <a href="https://avante.io" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline", whiteSpace: "nowrap" }} rel="noreferrer">Avante IO</a>, and{" "}
+                <a href="https://secoda.co" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }} rel="noreferrer">Secoda</a>
+                {' '}where I developed full-stack features. I am now looking for a{" "}
                 <span style={{ fontWeight: "bold" }}>
-                  Fall 2024 Software Engineering co-op{" "}
+                  Summer 2025 Software Engineering co-op{" "}
                 </span>
                 position. You can reach me at{" "}
                 <a
@@ -243,22 +246,97 @@ function App() {
                   style={{
                     textAlign: "left",
                     marginBottom: 0,
-                    width: "20%",
+                    marginLeft: "2%",
                     fontWeight: 1000,
+                    fontSize: "4rem",
                   }}>
                   👨‍💻 Experience{" "}
                 </h2>
-                <div ref={avanteref}>
-                  <motion.div
-                    className="card-container"
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    style={{ scale: avantescrollYProgress }}>
-                    <motion.div className="card">
+                <div ref={runqlref}>
                       <Box
                         ta="center"
                         p="xl"
-                        style={{ borderRadius: "md", justifyItems: "center" }}
+                        style={{ borderRadius: "md"}}
+                        mt={0}>
+                        <Card
+                          style={{
+                            textAlign: "center",
+                            height: "40%",
+                            marginRight: "auto",
+                            borderRadius: "24px",
+                            padding: "8px",
+                            alignContent: "center",
+                            justifyItems: "center",
+                          }}
+                          isBlurred>
+                          <Group>
+                            <img src={runql} alt="RunQL Logo" style={{
+                              width: 300,
+                              height: 100,
+                              margin: '1%',
+                            }} />
+                            <div>
+                              <h4
+                                style={{
+                                  marginBottom: 0,
+                                  textAlign: "left",
+                                  fontWeight: 1000,
+                                }}>
+                                RunQL
+                              </h4>
+                              <h6
+                                style={{
+                                  marginTop: 0,
+                                  textAlign: "left",
+                                  color: "lightgray",
+                                }}>
+                                Software Engineer Intern
+                              </h6>
+                            </div>
+                          </Group>
+
+                          <Stack>
+                            <CardItem
+                              title="Data Integration"
+                              type="feature"
+                              description="Enabled two-way Snowflake and Databricks data integration, persisting data using React and Typescript"
+                              image={snowflakedatabricks}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                            <CardItem
+                              title="AI Charts"
+                              type="feature"
+                              description="Implemented real-time AI-generated charts from query data, processing 10000+ rows while ensuring data privacy"
+                              image={aichart}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                            <CardItem
+                              title="Search Optimization"
+                              type="feature"
+                              description="Extracted query metadata using AI Models to enable faceted Opensearch filters, reducing search time by 50%"
+                              image={opensearch}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                            <CardItem
+                              title="Staging Environment"
+                              type="feature"
+                              description="Introduced staging environment using AWS, Typescript, and Docker, reducing production bugs by 75%"
+                              image={ec2}
+                              link={""}
+                              buttonLabel="View Feature"
+                            />
+                          </Stack>
+                        </Card>
+                      </Box>
+                </div>
+                <div ref={avanteref}>
+                      <Box
+                        ta="center"
+                        p="xl"
+                        style={{ borderRadius: "md"}}
                         mt={0}>
                         <Card
                           style={{
@@ -276,9 +354,10 @@ function App() {
                               src={avante}
                               alt=""
                               style={{
-                                width: 75,
-                                height: 75,
+                                width: 125,
+                                height: 125,
                                 borderRadius: "50%",
+                                margin: '1%'
                               }}
                             />
                             <div>
@@ -301,12 +380,8 @@ function App() {
                             </div>
                           </Group>
 
-                          <Group
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                            }}>
+                          <Stack
+                            >
                             <CardItem
                               title="Consili.io"
                               type="feature"
@@ -342,52 +417,131 @@ function App() {
                               link={"https://consili.io"}
                               buttonLabel="View Consili"
                             />
-                          </Group>
+                          </Stack>
                         </Card>
                       </Box>
-                    </motion.div>
-                  </motion.div>
                 </div>
+                
                 <Group></Group>
                 <div ref={secodaref}>
-                  <motion.div
-                    className="card-container"
-                    initial="offscreen"
-                    whileInView="onscreen"
-                    style={{ scale: secodascrollYProgress }}>
-                    <motion.div className="card">
+                    <Box
+                      ta="center"
+                      p="xl"
+                      style={{ borderRadius: "md", justifyItems: "center" }}
+                      mt={0}>
+                      <Card
+                        style={{
+                          textAlign: "center",
+                          marginRight: "auto",
+                          height: "40%",
+                          borderRadius: "24px",
+                          padding: "8px",
+                        }}
+                        isBlurred>
+                        <Group>
+                          <img
+                            src={secodaLogo}
+                            alt=""
+                            style={{
+                              width: 125,
+                              height: 125,
+                              borderRadius: "25%",
+                              margin: '1%'
+                            }}
+                          />
+                          <div>
+                            <h4
+                              style={{
+                                marginBottom: 0,
+                                textAlign: "left",
+                                fontWeight: 1000,
+                              }}>
+                              Secoda (YC S21)
+                            </h4>
+                            <h6
+                              style={{
+                                marginTop: 0,
+                                textAlign: "left",
+                                color: "lightgray",
+                              }}>
+                              Software Engineer Intern
+                            </h6>
+                          </div>
+                        </Group>
+
+                        <Stack>
+                          <CardItem
+                            title="Command Palette"
+                            type="feature"
+                            description="With the command palette feature, users are able to quickly search through their workspace, create new resources, and navigate through Secoda."
+                            image={commandPalette}
+                            link={"https://docs.secoda.co/features/search"}
+                            buttonLabel="View in Documentation"
+                          />
+                          <CardItem
+                            title="Jira Integration"
+                            type="feature"
+                            description="Secoda's Jira integration allows for users to pull their Jira issues into Secoda as questions, allowing for a seamless connection between the two workspaces"
+                            image={Jira}
+                            link={
+                              "https://docs.secoda.co/integrations/productivity-tools/jira#h_448e650cba"
+                            }
+                            buttonLabel="View in Documentation"
+                          />
+                          <CardItem
+                            title="Power BI Authentication"
+                            type="improvement"
+                            description="Developed new Power BI Authentication to enable non-admin users to extract reports, datasets, and workflows, importing them into Secoda"
+                            image={powerbi}
+                            link={
+                              "https://docs.secoda.co/integrations/data-visualization-tools/power-bi"
+                            }
+                            buttonLabel="View in Documentation"
+                          />
+                          <CardItem
+                            title="MS SQL Stored Procedures"
+                            type="feature"
+                            description="Developed new MS SQL Stored Procedures to extract lineage MS SQL table's lineage, assigning  responsible queries to their respective lineages"
+                            image={mssql}
+                            link={
+                              "https://docs.secoda.co/integrations/databases/microsoft-sql-server/"
+                            }
+                            buttonLabel="View in Documentation"
+                          />
+                        </Stack>
+                      </Card>
+                    </Box>
+                </div>
+                  <div ref={uwaftref}>
                       <Box
                         ta="center"
                         p="xl"
-                        style={{ borderRadius: "md", justifyItems: "center" }}
+                        style={{ borderRadius: "md", width: "100%" }}
                         mt={0}>
                         <Card
-                          style={{
-                            textAlign: "center",
-                            marginRight: "auto",
-                            height: "40%",
-                            borderRadius: "24px",
-                            padding: "8px",
-                          }}
+                        style={{
+                          textAlign: "center",
+                          width: "100%",
+                          height: "40%",
+                          borderRadius: "24px",
+                          padding: "8px",
+                        }}
                           isBlurred>
                           <Group>
                             <img
-                              src={secodaLogo}
+                              src={uw}
                               alt=""
                               style={{
-                                width: 75,
-                                height: 75,
+                                width: 125,
+                                height: 125,
                                 borderRadius: "25%",
+                                margin: '1%'
                               }}
                             />
-                            <div>
+                            <Stack>
                               <h4
-                                style={{
-                                  marginBottom: 0,
-                                  textAlign: "left",
-                                  fontWeight: 1000,
-                                }}>
-                                Secoda (YC S21)
+                                style={{ marginBottom: 0, fontWeight: 1000 }}>
+                                UWaterloo EcoCar Design Team
                               </h4>
                               <h6
                                 style={{
@@ -395,119 +549,23 @@ function App() {
                                   textAlign: "left",
                                   color: "lightgray",
                                 }}>
-                                Software Engineer Intern
+                                Software Developer
                               </h6>
-                            </div>
+                            </Stack>
                           </Group>
 
-                          <Group style={{ alignContent: "center" }}>
-                            <CardItem
-                              title="Command Palette"
-                              type="feature"
-                              description="With the command palette feature, users are able to quickly search through their workspace, create new resources, and navigate through Secoda."
-                              image={commandPalette}
-                              link={"https://docs.secoda.co/features/search"}
-                              buttonLabel="View in Documentation"
-                            />
-                            <CardItem
-                              title="Jira Integration"
-                              type="feature"
-                              description="Secoda's Jira integration allows for users to pull their Jira issues into Secoda as questions, allowing for a seamless connection between the two workspaces"
-                              image={Jira}
-                              link={
-                                "https://docs.secoda.co/integrations/productivity-tools/jira#h_448e650cba"
-                              }
-                              buttonLabel="View in Documentation"
-                            />
-                            <CardItem
-                              title="Power BI Authentication"
-                              type="improvement"
-                              description="Developed new Power BI Authentication to enable non-admin users to extract reports, datasets, and workflows, importing them into Secoda"
-                              image={powerbi}
-                              link={
-                                "https://docs.secoda.co/integrations/data-visualization-tools/power-bi"
-                              }
-                              buttonLabel="View in Documentation"
-                            />
-                            <CardItem
-                              title="MS SQL Stored Procedures"
-                              type="feature"
-                              description="Developed new MS SQL Stored Procedures to extract lineage MS SQL table's lineage, assigning  responsible queries to their respective lineages"
-                              image={mssql}
-                              link={
-                                "https://docs.secoda.co/integrations/databases/microsoft-sql-server/"
-                              }
-                              buttonLabel="View in Documentation"
-                            />
-                          </Group>
+                          <CardItem
+                            title="Software Developer"
+                            type="feature"
+                            description="Researched methods of creating 3D models of automotive
+                    interiors using Blender and Python, learning to work in a team environment"
+                            image={uwaft}
+                            link={"https://www.uwaft.ca/"}
+                            buttonLabel="View Design Team"
+                          />
                         </Card>
                       </Box>
-                    </motion.div>
-                  </motion.div>
-                </div>
-                <Group>
-                  <div ref={uwaftref}>
-                    <motion.div
-                      className="card-container"
-                      initial="offscreen"
-                      whileInView="onscreen"
-                      style={{ scale: uwaftscrollYProgress }}>
-                      <motion.div className="card">
-                        <Box
-                          ta="center"
-                          p="xl"
-                          style={{ borderRadius: "md" }}
-                          mt={0}>
-                          <Card
-                            style={{
-                              textAlign: "center",
-                              marginRight: "auto",
-                              height: "40%",
-                              borderRadius: "24px",
-                              padding: "8px",
-                            }}
-                            isBlurred>
-                            <Group>
-                              <img
-                                src={uw}
-                                alt=""
-                                style={{
-                                  width: 75,
-                                  height: 75,
-                                  borderRadius: "25%",
-                                }}
-                              />
-                              <Stack>
-                                <h4
-                                  style={{ marginBottom: 0, fontWeight: 1000 }}>
-                                  UWaterloo EcoCar Design Team
-                                </h4>
-                                <h6
-                                  style={{
-                                    marginTop: 0,
-                                    textAlign: "left",
-                                    color: "lightgray",
-                                  }}>
-                                  Software Developer
-                                </h6>
-                              </Stack>
-                            </Group>
-
-                            <CardItem
-                              title="Software Developer"
-                              type="feature"
-                              description="Researched methods of creating 3D models of automotive
-                    interiors using Blender and Python, learning to work in a team environment"
-                              image={uwaft}
-                              link={"https://www.uwaft.ca/"}
-                              buttonLabel="View Design Team"
-                            />
-                          </Card>
-                        </Box>
-                      </motion.div>
-                    </motion.div>
                   </div>
-                </Group>
               </Card>
 
               <section id="projects" />
@@ -523,10 +581,10 @@ function App() {
                 <h2 style={{ textAlign: "left", fontWeight: 1000 }}>
                   🛠️ Projects{" "}
                 </h2>
-                <Group style={{ width: "100%", justifyContent: "center" }}>
+                <Stack style={{ width: "100%" }}>
                   <CardItem
                     title="Gotchi.ai"
-                    description="gotchi.ai functions as a virtual pet assistant, allowing users to interact with and care for a digital pet through activities like feeding and monitoring its well-being. In addition, it also provides features that support educational study aids like a Pomodoro timer, an interactive voice-activated AI chat, an AI-powered text summarizer, memo pads, and more.                "
+                    description="gotchi.ai functions as a virtual pet assistant, allowing users to interact with and care for a digital pet through activities like feeding and monitoring its well-being. In addition, it also provides features that support educational study aids like a Pomodoro timer, an interactive voice-activated AI chat, an AI-powered text summarizer, memo pads, and more."
                     type="UofTHacks 11"
                     link="https://devpost.com/software/gotchi-ai"
                     buttonLabel="View Devpost"
@@ -548,17 +606,16 @@ the car's movement"
                     link="https://github.com/elaimizrahi/spotify"
                     buttonLabel="Github"
                     image={spotify}
-                  />{" "}
+                  />
                   <CardItem
                     title="MemoryMap (WIP)"
-                    description="Developed web app to create a ”Memory Map” for users using a React and Typescript front end and a MongoDB and Python
-                  back‑end"
+                    description={"Developed web app to create a 'Memory Map' for users using a React and Typescript front end and a MongoDB and Python back‑end"}
                     type="Personal Project"
                     link="https://github.com/elaimizrahi/spotify"
                     buttonLabel="Github"
                     image={map}
-                  />{" "}
-                </Group>{" "}
+                  />
+                </Stack>
               </Card>
 
               <Stack style={{ paddingTop: "0px", width: "100%" }}>
@@ -604,26 +661,27 @@ the car's movement"
                           style={{
                             alignSelf: "left",
                             paddingTop: 0,
+                            fontSize: "2rem",
                             fontWeight: 900,
                           }}>
                           Languages:
                         </h4>
-                        <div style={{ fontStyle: "italic", fontSize: "30px" }}>
+                        <div style={{ fontStyle: "italic", width: "100%" }}>
                           <Code
-                            style={{ fontStyle: "italic", fontSize: "65px" }}>
-                            <Group>
-                              <SiJavascript />
-                              <SiPython />
-                              <SiCplusplus />
-                              <SiTypescript />
-                              <SiC />
-                              <FaJava />
-                              <SiGo />
-                              <SiTerraform />
-                              <SiSwift />
-                              <SiHtml5 />
-                              <TbSql />
-                              <SiCss3 />
+                            style={{ fontStyle: "italic", width: "100%", display: "block" }}>
+                            <Group style={{ width: "100%", justifyContent: "space-between" }}>
+                              <SiJavascript style={{ width: "7%", height: "auto" }} />
+                              <SiPython style={{ width: "7%", height: "auto" }} />
+                              <SiCplusplus style={{ width: "7%", height: "auto" }} />
+                              <SiTypescript style={{ width: "7%", height: "auto" }} />
+                              <SiC style={{ width: "7%", height: "auto" }} />
+                              <FaJava style={{ width: "7%", height: "auto" }} />
+                              <SiGo style={{ width: "7%", height: "auto" }} />
+                              <SiTerraform style={{ width: "7%", height: "auto" }} />
+                              <SiSwift style={{ width: "7%", height: "auto" }} />
+                              <SiHtml5 style={{ width: "7%", height: "auto" }} />
+                              <TbSql style={{ width: "7%", height: "auto" }} />
+                              <SiCss3 style={{ width: "7%", height: "auto" }} />
                             </Group>
                           </Code>
                         </div>
@@ -631,27 +689,28 @@ the car's movement"
                         <h4
                           style={{
                             alignSelf: "left",
-                            padding: 0,
+                            padding: 0,   
+                            fontSize: "2rem",
                             fontWeight: 900,
                           }}>
                           Frameworks:
                         </h4>
-                        <div style={{ fontStyle: "italic", fontSize: "30px" }}>
+                        <div style={{ fontStyle: "italic", width: "100%" }}>
                           <Code
-                            style={{ fontStyle: "italic", fontSize: "65px" }}>
-                            <Group>
-                              <SiReact />
-                              <SiMongodb />
-                              <SiDjango />
-                              <SiAmazonaws />
-                              <SiNodedotjs />
-                              <SiPostgresql />
-                              <SiDocker />
-                              <SiTensorflow />
-                              <SiFirebase />
-                              <SiCelery />
-                              <SiElasticsearch />
-                              <BiLogoVuejs />
+                            style={{ fontStyle: "italic", width: "100%", display: "block" }}>
+                            <Group style={{ width: "100%", justifyContent: "space-between" }}>
+                              <SiReact style={{ width: "7%", height: "auto" }} />
+                              <SiMongodb style={{ width: "7%", height: "auto" }} />
+                              <SiDjango style={{ width: "7%", height: "auto" }} />
+                              <SiAmazonaws style={{ width: "7%", height: "auto" }} />
+                              <SiNodedotjs style={{ width: "7%", height: "auto" }} />
+                              <SiPostgresql style={{ width: "7%", height: "auto" }} />
+                              <SiDocker style={{ width: "7%", height: "auto" }} />
+                              <SiTensorflow style={{ width: "7%", height: "auto" }} />
+                              <SiFirebase style={{ width: "7%", height: "auto" }} />
+                              <SiCelery style={{ width: "7%", height: "auto" }} />
+                              <SiElasticsearch style={{ width: "7%", height: "auto" }} />
+                              <BiLogoVuejs style={{ width: "7%", height: "auto" }} />
                             </Group>
                           </Code>
                         </div>
@@ -659,26 +718,27 @@ the car's movement"
                           style={{
                             alignSelf: "left",
                             padding: 0,
+                            fontSize: "2rem",
                             fontWeight: 900,
                           }}>
                           Developer Tools:
                         </h4>
-                        <div style={{ fontStyle: "italic", fontSize: "30px" }}>
+                        <div style={{ fontStyle: "italic", width: "100%" }}>
                           <Code
-                            style={{ fontStyle: "italic", fontSize: "65px" }}>
-                            <Group>
-                              <SiGit />
-                              <SiGithub />
-                              <SiVisualstudiocode />
-                              <SiTrello />
-                              <SiPytest />
-                              <SiJira />
-                              <SiPowerbi />
-                              <SiLinear />
-                              <SiGithubactions />
-                              <SiGooglecolab />
-                              <SiFigma />
-                              <SiMicrosoftazure />
+                            style={{ fontStyle: "italic", width: "100%", display: "block" }}>
+                            <Group style={{ width: "100%", justifyContent: "space-between" }}>
+                              <SiGit style={{ width: "7%", height: "auto" }} />
+                              <SiGithub style={{ width: "7%", height: "auto" }} />
+                              <SiVisualstudiocode style={{ width: "7%", height: "auto" }} />
+                              <SiTrello style={{ width: "7%", height: "auto" }} />
+                              <SiPytest style={{ width: "7%", height: "auto" }} />
+                              <SiJira style={{ width: "7%", height: "auto" }} />
+                              <SiPowerbi style={{ width: "7%", height: "auto" }} />
+                              <SiLinear style={{ width: "7%", height: "auto" }} />
+                              <SiGithubactions style={{ width: "7%", height: "auto" }} />
+                              <SiGooglecolab style={{ width: "7%", height: "auto" }} />
+                              <SiFigma style={{ width: "7%", height: "auto" }} />
+                              <SiMicrosoftazure style={{ width: "7%", height: "auto" }} />
                             </Group>
                           </Code>
                         </div>
@@ -705,7 +765,7 @@ the car's movement"
                           padding: 0,
                           fontWeight: 900,
                         }}>
-                        My Github History
+                        Github History
                       </h4>
                       <Button
                         onClick={() =>
@@ -714,9 +774,15 @@ the car's movement"
                             "_blank"
                           )
                         }
-                        style={{ backgroundColor: "#18181B" }}>
-                        <GitHubIcon />
-                        Github
+                        style={{ 
+                          backgroundColor: "#18181B", 
+                          fontSize: "2rem",
+                          padding: "1rem",
+                          height: "auto",
+                          width: "auto"
+                        }}>
+                        <GitHubIcon style={{fontSize: "2rem"}}/>
+                        <span style={{marginLeft: "0.5rem"}}>Github</span>
                       </Button>
                     </Group>
 
@@ -725,44 +791,41 @@ the car's movement"
                         textAlign: "center",
                         marginLeft: "auto",
                         marginRight: "auto",
-                        height: "40%",
+                        height: "100%",
                         borderRadius: "12px",
                         padding: "8px",
-                        marginBottom: "10px",
+                        marginBottom: "10px"
                       }}>
                       <GitHubCalendar
                         username="elaimizrahi"
                         style={{ justifyContent: "center" }}
+                        blockSize={20}
+                        fontSize={20}
                       />
                     </Card>
+
                   </Card>
                 </Card>
                 <section id="contact" />
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Card
                   style={{
                     textAlign: "center",
                     height: "40%",
                     borderRadius: "24px",
                     padding: "8px",
+                    width: '50%'
                   }}
                   isBlurred>
-                  <h2
+                    <Group style={{ justifyContent: "space-around" }}>
+                    <h2
                     style={{
                       textAlign: "left",
                       padding: "8px",
                       fontWeight: 1000,
                     }}>
-                    📞 Contact Me!{" "}
+                    📞 Contact Me: {" "}
                   </h2>
-                  <Card
-                    style={{
-                      textAlign: "center",
-                      height: "40%",
-                      borderRadius: "24px",
-                      padding: "16px",
-                    }}
-                    isBlurred>
-                    <Group style={{ justifyContent: "space-around" }}>
                       <a href={mailto}>
                         <img src={mail} alt="" height={50} width={75} />
                       </a>
@@ -778,8 +841,9 @@ the car's movement"
                         />
                       </a>
                     </Group>
-                  </Card>
+                    
                 </Card>
+                </div>
               </Stack>
             </Stack>
           </header>
