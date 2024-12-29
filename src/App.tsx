@@ -116,14 +116,13 @@ function App() {
                   color: "white",
                 }}
                 onSelectionChange={(tab) => scrollToSection(tab)}>
-                <Tab key="about" title="About Me" style={{ margin: "10px", fontSize: '25px' }} />
-                <Tab key="experience" title="Experience" style={{ margin: "10px", fontSize: '25px' }} />
-                <Tab key="projects" title="Projects" style={{ margin: "10px", fontSize: '25px' }} />
-                <Tab key="skills" title="Skills" style={{ margin: "10px", fontSize: '25px' }} />
+                <Tab key="about" title="About Me" style={{ margin: "3px" }} />
+                <Tab key="experience" title="Experience" />
+                <Tab key="projects" title="Projects" />
+                <Tab key="skills" title="Skills" />
                 <Tab
                   key="contact"
                   title="Contact Me"
-                  style={{ margin: "10px", fontSize: '25px' }}
                 />
               </Tabs>
             </div>
@@ -135,30 +134,30 @@ function App() {
                 <img
                   src={profile}
                   style={{
-                    width: 400,
-                    height: 400,
+                    width: 250,
+                    height: 250,
                     borderRadius: "5%",
                     border: "5px solid white",
                   }}
                   alt="Profile"></img>
                 <Stack ml={25}>
-                  <Text fw={500} fz={"5rem"} mr="auto">
-                    Hello, I'm{" "}
+                  <Text fw={500} fz={"3rem"} mr="auto">
+                    Hi! I'm Elai Mizrahi:{" "}
                   </Text>
                   <TypeAnimation
                     sequence={[
-                      "Elai Mizrahi 👋",
                       1000,
-                      "a Software Engineer 💻",
+                      "Software Engineer 💻",
                       1000,
-                      "an AI Developer 🧠",
+                      "AI Developer 🧠",
                       1000,
+                      "Innovator 🚀"
                     ]}
                     wrapper="span"
                     speed={20}
                     deletionSpeed={50}
                     style={{
-                      fontSize: "5rem",
+                      fontSize: "3rem",
                       fontWeight: "bold",
                       marginRight: "auto",
                     }}
@@ -167,7 +166,10 @@ function App() {
                   <Group style={{ marginRight: "auto", marginTop: "10px" }}>
                   <Button 
                     onClick={() => window.open("./Elai_Mizrahi_Resume.pdf", "_blank")}
-                    style={{ backgroundColor: "#7828C8", fontSize: "1.5rem", padding: "1.5rem 2rem"}}>
+                    style={{ backgroundColor: "#7828C8", 
+                                            fontSize: "1rem",
+                        padding: "1rem 1rem"
+                    }}>
                     <InsertDriveFileIcon style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
                     Resume
                   </Button>
@@ -182,8 +184,8 @@ function App() {
                       style={{
                         marginRight: "auto", 
                         backgroundColor: "#004493",
-                        fontSize: "1.5rem",
-                        padding: "1.5rem 2rem"
+                        fontSize: "1rem",
+                        padding: "1rem 1rem"
                       }}>
                       <LinkedInIcon style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
                       Linkedin
@@ -195,8 +197,8 @@ function App() {
                       style={{
                         marginRight: "auto",
                         backgroundColor: "#18181B", 
-                        fontSize: "1.5rem",
-                          padding: "1.5rem 2rem"
+                        fontSize: "1rem",
+                        padding: "1rem 1rem"
                       }}>
                       <GitHubIcon style={{ fontSize: "2rem", marginRight: "0.5rem" }} />
                       Github
@@ -204,7 +206,7 @@ function App() {
                   </Group>
                 </Stack>
               </Group>
-              <p style={{ fontWeight: "bold", fontSize: "4rem" }}>
+              <p style={{ fontWeight: "bold", fontSize: "2.5rem" }}>
                 Software engineer, Student, and Aspiring founder
               </p>
               <p></p>
@@ -248,7 +250,7 @@ function App() {
                     marginBottom: 0,
                     marginLeft: "2%",
                     fontWeight: 1000,
-                    fontSize: "4rem",
+                    fontSize: "3rem",
                   }}>
                   👨‍💻 Experience{" "}
                 </h2>

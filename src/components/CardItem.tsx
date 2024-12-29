@@ -64,7 +64,7 @@ const CardItem: React.FC<CardItemProps> = ({
                       alignItems: "center",
                       marginBottom: "1rem"
                     }}>
-                    <Text fw={500} style={{fontSize: "2rem"}}>{title}</Text>
+                    <Text fw={500} style={{fontSize: "1.5rem"}}>{title}</Text>
                     <Badge color={typeColor} variant="light" size="xl">
                       {type}
                     </Badge>
@@ -76,7 +76,7 @@ const CardItem: React.FC<CardItemProps> = ({
                       justifyContent: "space-between",
                       height: "100%",
                     }}>
-                    <div style={{fontSize: '1.5rem', color: 'lightgray'}}>
+                    <div style={{fontSize: '1rem', color: 'lightgray'}}>
                       {description}
                     </div>
 
