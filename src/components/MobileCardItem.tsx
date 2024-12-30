@@ -78,7 +78,7 @@ const MobileCardItem: React.FC<CardItemProps> = ({
                       {description}
                     </Text>
 
-                    <Button
+                    {link.length > 0 && <Button
                       variant="light"
                       color="blue"
                       fullWidth
@@ -88,7 +88,7 @@ const MobileCardItem: React.FC<CardItemProps> = ({
                         window.open(link);
                       }}>
                       {buttonLabel}
-                    </Button>
+                    </Button>}
                   </div>
                 </div>
               </div>
