@@ -245,17 +245,19 @@ function App() {
                 Software engineer, Student, and Aspiring founder
               </p>
               <div>
-                I am in my second year of{" "}
+                I am in my third year of{" "}
                 <span style={{ fontWeight: "bold" }}>Software Engineering</span>{" "}
                 at the University of Waterloo with a specialization in
                 <span style={{ fontWeight: "bold" }}>
                   {" "}
                   Artificial Intelligence
                 </span>
-                . I have just completed co-op terms at Avante IO and Secoda
-                where I developed full-stack features. I am looking for a{" "}
+                . I have completed co-op terms at <a href="https://runql.com" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }} rel="noreferrer">RunQL</a>,{" "}
+                <a href="https://avante.io" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline", whiteSpace: "nowrap" }} rel="noreferrer">Avante IO</a>, and{" "}
+                <a href="https://secoda.co" target="_blank" style={{ fontWeight: "bold", textDecoration: "underline" }} rel="noreferrer">Secoda</a>
+                {' '}where I developed full-stack features. I am now looking for a{" "}
                 <span style={{ fontWeight: "bold" }}>
-                  Fall 2024 Software Engineering co-op{" "}
+                  Summer 2025 Software Engineering co-op{" "}
                 </span>
                 position. You can reach me at{" "}
                 <a
