@@ -1,10 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import Blog from "./Blog";
-import { Divider, Group, Stack } from "@mantine/core";
-import React, { useEffect, useCallback } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import profileImage from "./images/IMG_5423.png"; // Replace with your actual image
+import { Group, Stack } from "@mantine/core";
+import React, {  useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadLinksPreset } from "tsparticles-preset-links";
 import { Engine } from "tsparticles-engine";

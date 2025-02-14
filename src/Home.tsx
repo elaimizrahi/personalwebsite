@@ -1,25 +1,12 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import profileImage from "./images/IMG_5423.png"; // Replace with your actual image
-import Particles from "react-tsparticles";
-import { loadLinksPreset } from "tsparticles-preset-links";
-import { Engine } from "tsparticles-engine";
 import {
-  Container,
-  Flex,
-  Avatar,
   Stack,
   Group,
-  Text,
-  Anchor,
-  Divider,
 } from "@mantine/core";
-import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadLinksPreset(engine);
-  }, []);
 
   return (
     <div className="min-h-screen text-white flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
