@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Route from "./Route";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
@@ -16,7 +16,7 @@ root.render(
     <NextUIProvider>
       <main className="dark text-foreground">
         <MantineProvider>
-          <Route />
+          <App />
         </MantineProvider>
       </main>
     </NextUIProvider>
