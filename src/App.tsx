@@ -7,6 +7,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { loadLinksPreset } from "@tsparticles/preset-links";
 import { useMediaQuery } from 'react-responsive'
+import BlogItem from "./BlogItem";
 
 const App: React.FC = () => {
   const [init, setInit] = useState(false);
@@ -48,21 +49,24 @@ const App: React.FC = () => {
     display: 'flex',
     alignItems: 'flex-end',
     height: '10vh',
+    minWidth: '50vw',
     zIndex: 10,
 }}>
   <Group justify="space-between" style={{ width: '100%' }}>
   <Link to="/" className="text-gray-400 px-6 flex" style={{ fontWeight: 'bold', zIndex: 100 }}>Home</Link>
-    {/* <Link to="/" className="text-gray-400 px-6 flex" style={{ fontWeight: 'bold', zIndex: 100 }}>Home</Link> */}
+<Link to="/blog" className="text-gray-400 px-6 flex" style={{ fontWeight: 'bold', zIndex: 100 }}>Blog</Link>
   </Group>
 </div>
 
         <div style={{
                   display: 'flex',
+                  justifyContent: 'center',
                   zIndex: '10'
               }}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogItem />} />
       </Routes>
 
       </div>

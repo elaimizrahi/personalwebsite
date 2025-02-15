@@ -3,58 +3,50 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import {
   Stack,
   Group,
+  Button,
 } from "@mantine/core";
+import { Link } from "react-router-dom";
 const Blog: React.FC = () => {
-
+    const blogPosts = [
+        { id: "1", date: 'Feb 15, 2025', title: "Understanding React Hooks - my struggle", summary: "A deep dive into useState, useEffect, and custom hooks. Best practices for keeping your React app fast and smooth." },
+        { id: "2", date: 'Feb 15, 2025', title: "Building a Full-Stack App", summary: "How to connect a React frontend with a Node.js backend." },
+        { id: "3", date: 'Feb 15, 2025', title: "Optimizing React Performance", summary: "Best practices for keeping your React app fast and smooth." },
+      ];
   return (
-    <div className="min-h-screen text-black flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',}}>
-  
+    <div className="min-h-screen text-black flex flex-col items-center justify-center px-6 relative overflow-hidden">
+    {/* Profile Section */}
+    <div className="relative z-10 flex flex-col items-center text-center w-full max-w-2xl">
+      <div className="flex flex-col items-center justify-center w-full px-6">
         
+        {true ? <div style={{ color: "black", fontWeight: "bolder", fontSize: 15 }}> blog posts  will be coming soon! 👀</div>: <ul className="w-full max-w-2xl">
+          {blogPosts.map((post) => (
+            <li key={post.id} className="w-full">
+              <Link to={`/blog/${post.id}`} className="block w-full">
+                <Button
+                  variant="subtle"
+                  color="black"
+                  fullWidth
+                  radius="sm"
+                  mt="md"
+                  justify="space-between"
+                  leftSection={
+                    <span style={{ color: "black", fontWeight: "bolder", fontSize: 15 }}>
+                      {post.title}
+                    </span>
+                  }
+                  rightSection={
+                    <span style={{ color: "gray" }}>
+                      {post.date}
+                    </span>
+                  }
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>}
   
-        {/* Profile Section */}
-        <div className="relative z-10 flex flex-col items-left text-center max-w-2xl ">
-          <Stack gap={30}>
-          {/* About Section */}
-          <p className="mt-6 text-gray-400 px-6">
-            Hey, I'm Elai Mizrahi! I'm a third-year Software Engineering student at the University of Waterloo who enjoys 
-            building interesting and impactful software. My main interests center around databases, artificial intelligence, and full-stack development.
-          </p>
-  
-          <p className="mt-4 text-gray-400">
-            Previously, I interned as a Full-Stack Software Developer at <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://runql.com" className="text-blue-400">RunQL</a>. 
-            I have also completed internships at <a style={{textDecoration: 'underline', fontWeight: 'bold'}} href="https://secoda.co" className="text-blue-400">Secoda (YC S21)</a> and <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://avante.io" className="text-blue-400">Avante IO</a> as a Software Engineering Intern. 
-          </p>
-  
-          <p className="mt-4 text-gray-400">
-            At the University of Waterloo, I represent my Software Engineering Cohort as the Academic and Engineering Society representative and have been part of the <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://www.uwaft.ca/" className="text-blue-400">UWAFT Design Team</a>.
-          </p>
-  
-          {/* Social Links */}
-          <p className="mt-6 text-gray-400">
-            Feel free to view my on GitHub, connect with me on LinkedIn, or shoot me an email.
-          </p>
-          <Group justify="center">
-            <a href="https://github.com/elaimizrahi" target="_blank" rel="noopener noreferrer">
-              <FaGithub size={28} className="hover:text-blue-400" />
-            </a>
-            <a href="https://linkedin.com/in/elai-mizrahi" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin size={28} className="hover:text-blue-400" />
-            </a>
-            <a href="mailto:emizrahi@uwaterloo.ca">
-              <FaEnvelope size={28} className="hover:text-blue-400" />
-            </a>
-          </Group>
-          <Group justify="right">
-  
-          <p className="mt-8 text-gray-500 text-sm">© {new Date().getFullYear()} Elai Mizrahi</p>
-          </Group>
-  
-          </Stack>
-          </div>
-          </div>
-  );
-};
-
+      </div>
+    </div>
+  </div>
+)};  
 export default Blog;
