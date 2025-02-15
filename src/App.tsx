@@ -20,7 +20,6 @@ const App: React.FC = () => {
     const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
   return (
     <div>
-      <Analytics>
     <Router>
       <div className="min-h-screen text-black flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
       justifyContent: 'center',
@@ -78,7 +77,7 @@ const App: React.FC = () => {
       </div>
       </div>
     </Router>
-    </Analytics>
+    <Analytics/>
     </div>
 
   );
