@@ -9,7 +9,7 @@ import {
 const Home: React.FC = () => {
 
   return (
-    <div className="min-h-screen text-white flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
+    <div className="min-h-screen text-black flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',}}>
 

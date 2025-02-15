@@ -5,20 +5,22 @@ import { Group, Stack } from "@mantine/core";
 import React, {  useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { loadLinksPreset } from "@tsparticles/preset-links"; // ✅ Import the preset
+import { loadLinksPreset } from "@tsparticles/preset-links";
+import { useMediaQuery } from 'react-responsive'
 
 const App: React.FC = () => {
   const [init, setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine); // Loads a smaller version of tsParticles
-      await loadLinksPreset(engine); // ✅ Loads the "links" preset
+      await loadSlim(engine);
+      await loadLinksPreset(engine);
     }).then(() => setInit(true));
   }, []);
+    const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
   return (
     <div>
     <Router>
-      <div className="min-h-screen text-white flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
+      <div className="min-h-screen text-black flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',}}>
 {init && (
@@ -26,12 +28,12 @@ const App: React.FC = () => {
             id="tsparticles"
             options={{
               particles: {
-                number: { value: 250 },
+                number: { value: isTabletOrMobile ? 50 : 250 },
                 move: { enable: true, speed: 0.1 },
-                links: { enable: true, opacity: 0.5, color: "#ffffff" },
+                links: { enable: true, opacity: 0.2, color: "#010101" },
                 size: { value: 1}
               },
-              background: { color: '#101010'},
+              background: { color: '#f0f0f0'},
             }}
             className="absolute inset-0 z-[-1]"
           />
