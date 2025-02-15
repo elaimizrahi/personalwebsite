@@ -8,7 +8,7 @@ import { loadSlim } from "@tsparticles/slim";
 import { loadLinksPreset } from "@tsparticles/preset-links";
 import { useMediaQuery } from 'react-responsive'
 import BlogItem from "./BlogItem";
-
+import { Analytics } from "@vercel/analytics/react"
 const App: React.FC = () => {
   const [init, setInit] = useState(false);
   useEffect(() => {
@@ -20,6 +20,7 @@ const App: React.FC = () => {
     const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
   return (
     <div>
+      <Analytics>
     <Router>
       <div className="min-h-screen text-black flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{display: 'flex',
       justifyContent: 'center',
@@ -77,6 +78,7 @@ const App: React.FC = () => {
       </div>
       </div>
     </Router>
+    </Analytics>
     </div>
 
   );
