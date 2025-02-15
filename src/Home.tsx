@@ -21,7 +21,7 @@ const Home: React.FC = () => {
         <div className="flex items-center gap-4">
           <img
             src={profileImage}
-            alt="Profile"
+            alt="Profile Pic"
             className=" rounded-full border-4 border-gray-700"
             style={{
               width: '20vh',
