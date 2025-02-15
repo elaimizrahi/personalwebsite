@@ -36,7 +36,7 @@ const Home: React.FC = () => {
 
         {/* About Section */}
         <p className="mt-6 text-gray-400 px-6">
-          Hey, I'm Elai Mizrahi! I'm a third-year Software Engineering student at the University of Waterloo who enjoys 
+          Hey, I'm Elai! I'm a third-year Software Engineering student at the University of Waterloo who enjoys 
           building interesting and impactful software. My main interests center around databases, artificial intelligence, and full-stack development.
         </p>
 
