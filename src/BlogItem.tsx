@@ -1,61 +1,81 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
+import { useMediaQuery } from "react-responsive";
+import { NotionRenderer } from "react-notion-x";
+import { NotionAPI } from "notion-client";
 
-const blogContent: Record<string, string> = {
-  "1": `# Understanding React Hooks
-  React hooks let you use state and other features without writing a class.
-  
-  ## useState Example:
-  \`\`\`tsx
-  const [count, setCount] = useState(0);
-  \`\`\`
-  `,
-  "2": `# Building a Full-Stack App
-  Learn how to connect your frontend with a backend efficiently.
-  
-  ## Steps:
-  - Set up Express.js
-  - Connect it to React
-  - Fetch data with Axios
-  `,
-  "3": `# Optimizing React Performance
-  Improve React performance using memoization and lazy loading.
-  
-  ## Techniques:
-  - React.memo
-  - useCallback
-  - useMemo
+// Required core styles for react-notion-x
+import "react-notion-x/src/styles.css";
 
+// Code syntax highlighting
+import "prismjs/themes/prism-tomorrow.css";
 
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+// Math equation rendering
+import "katex/dist/katex.min.css";
 
-* Lists
-* [ ] todo
-* [x] done
+// Third-party Notion components
+import { Code } from "react-notion-x/build/third-party/code";
+import { Collection } from "react-notion-x/build/third-party/collection";
+import { Equation } from "react-notion-x/build/third-party/equation";
+import { Modal } from "react-notion-x/build/third-party/modal";
+import { Pdf } from "react-notion-x/build/third-party/pdf";
 
-A table:
+const NotionPage = ({ pageId }: { pageId: string }) => {
+  const [recordMap, setRecordMap] = useState<any>(null);
+  const [title, setTitle] = useState<string>(""); // Store the page title
 
-| a | b |
-| - | - |
-  `,
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/notion/${pageId}`);
+        const json = await res.json();
+        setRecordMap(json);
+
+        // Extract page title
+        const pageBlockId = Object.keys(json.block)[0]; // Get first block ID
+        const pageBlock = json.block[pageBlockId]?.value;
+
+        if (pageBlock?.properties?.title) {
+          const extractedTitle = pageBlock.properties.title
+            .map((text: any) => text[0])
+            .join(" ");
+          setTitle(extractedTitle);
+        }
+      } catch (error) {
+        console.error("Error fetching Notion data:", error);
+      }
+    };
+
+    fetchData();
+  }, [pageId]);
+
+  if (!recordMap) return <p>Loading...</p>;
+
+  return (
+    <div className="notion-container text-left">
+      <NotionRenderer
+        recordMap={recordMap}
+        fullPage
+        pageTitle={<div className='text-center'>{title}</div>}
+        previewImages={true}
+        components={{
+          Code,
+          Collection,
+          Equation,
+          Modal,
+          Pdf,
+          Header: () => null, // Removes Notion header
+        }}
+      />
+    </div>
+  );
 };
 
 const BlogItem: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const content = blogContent[id || ""];
+  const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
 
-  if (!content) {
-    return <div className="text-center text-red-500">Blog post not found.</div>;
-  }
-
-  return (
-    <div className="text-left">
-
-        <ReactMarkdown className="markdown">{content}</ReactMarkdown>
-        </div>
-
-  );
+  return <NotionPage pageId="93a16593140a431cb7bef9e1c77a68ce" />;
 };
 
 export default BlogItem;

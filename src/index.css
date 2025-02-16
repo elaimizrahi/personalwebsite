@@ -17,3 +17,22 @@ body {
 .markdown > * {
   all: revert;
 }
+
+.notion.notion-app {
+  background: transparent !important;
+}
+
+.notion.notion-frame {
+  background: transparent !important;
+}
+
+/* Ensure Notion text justification remains as defined in Notion */
+.notion.notion-text,
+.notion.notion-page-content {
+  text-align: initial !important;
+}
+
+/* Optional: Remove background if needed */
+.notion.notion-frame {
+  background: transparent !important;
+}
