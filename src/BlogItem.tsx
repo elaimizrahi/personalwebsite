@@ -27,7 +27,14 @@ const NotionPage = ({ pageId }: { pageId: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/notion/93a16593140a431cb7bef9e1c77a68ce`)
+        const res = await fetch(`/api/index`,  {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Custom-Header": "MyValue"
+          },
+          body: JSON.stringify({pageId: pageId})
+        })
         const json = await res.json();
         setRecordMap(json);
 
