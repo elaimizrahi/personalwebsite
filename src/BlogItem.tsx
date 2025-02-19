@@ -20,33 +20,64 @@ import { Equation } from "react-notion-x/build/third-party/equation";
 import { Modal } from "react-notion-x/build/third-party/modal";
 import { Pdf } from "react-notion-x/build/third-party/pdf";
 
-const NotionPage = ({ pageId }: { pageId: string }) => {
+interface NotionPageProps {
+  pageId: string;
+}
+
+
+const NotionPage: React.FC<NotionPageProps> = ({ pageId }) => {
   const [recordMap, setRecordMap] = useState<any>(null);
-  const [title, setTitle] = useState<string>(""); // Store the page title
+  const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
+    if (!pageId) return; // in case pageId is empty or undefined
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/notion?pageId=93a16593140a431cb7bef9e1c77a68ce`);
+        console.log("Fetching Notion data for page:", pageId);
+
+        // Vercel serverless endpoint
+        // e.g. /api/index/notion/:pageId
+        const res = await fetch(`/api/index/notion/${pageId}`, { signal });
+
+        if (!res.ok) {
+          throw new Error(`Error fetching page: ${res.status} ${res.statusText}`);
+        }
+
         const json = await res.json();
+        if (signal.aborted) return; // if request was aborted mid-fetch
+
         setRecordMap(json);
 
-        // Extract page title
-        const pageBlockId = Object.keys(json.block)[0]; // Get first block ID
-        const pageBlock = json.block[pageBlockId]?.value;
-
-        if (pageBlock?.properties?.title) {
-          const extractedTitle = pageBlock.properties.title
-            .map((text: any) => text[0])
-            .join(" ");
-          setTitle(extractedTitle);
+        // Extract page title (if it exists)
+        const firstBlockId = Object.keys(json.block || {})[0];
+        if (firstBlockId) {
+          const pageBlock = json.block[firstBlockId]?.value;
+          if (pageBlock?.properties?.title) {
+            const extractedTitle = pageBlock.properties.title
+              .map((text: any) => text[0])
+              .join(" ");
+            setTitle(extractedTitle);
+          }
         }
-      } catch (error) {
-        console.error("Error fetching Notion data:", error);
+      } catch (error: any) {
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted:", pageId);
+        } else {
+          console.error("Error fetching Notion data:", error);
+        }
       }
     };
 
     fetchData();
+
+    // Cleanup to abort fetch if the component unmounts
+    return () => {
+      controller.abort();
+    };
   }, [pageId]);
 
   if (!recordMap) return <p>Loading...</p>;
@@ -56,7 +87,8 @@ const NotionPage = ({ pageId }: { pageId: string }) => {
       <NotionRenderer
         recordMap={recordMap}
         fullPage
-        pageTitle={<div className='text-center'>{title}</div>}
+        // Optional custom "pageTitle" prop:
+        pageTitle={<div className="text-center">{title}</div>}
         previewImages={true}
         components={{
           Code,
@@ -70,6 +102,7 @@ const NotionPage = ({ pageId }: { pageId: string }) => {
     </div>
   );
 };
+
 
 const BlogItem: React.FC = () => {
   const { id } = useParams<{ id: string }>();
