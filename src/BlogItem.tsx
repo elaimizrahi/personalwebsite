@@ -32,8 +32,6 @@ const NotionPage: React.FC<NotionPageProps> = ({ pageId }) => {
   useEffect(() => {
     if (!pageId) return; // in case pageId is empty or undefined
 
-    const controller = new AbortController();
-    const signal = controller.signal;
 
     const fetchData = async () => {
       try {
@@ -41,14 +39,13 @@ const NotionPage: React.FC<NotionPageProps> = ({ pageId }) => {
 
         // Vercel serverless endpoint
         // e.g. /api/index/notion/:pageId
-        const res = await fetch(`/api/index/notion/${pageId}`, { signal });
+        const res = await fetch(`/api/index/notion/${pageId}`);
 
         if (!res.ok) {
           throw new Error(`Error fetching page: ${res.status} ${res.statusText}`);
         }
 
         const json = await res.json();
-        if (signal.aborted) return; // if request was aborted mid-fetch
 
         setRecordMap(json);
 
@@ -75,9 +72,6 @@ const NotionPage: React.FC<NotionPageProps> = ({ pageId }) => {
     fetchData();
 
     // Cleanup to abort fetch if the component unmounts
-    return () => {
-      controller.abort();
-    };
   }, [pageId]);
 
   if (!recordMap) return <p>Loading...</p>;

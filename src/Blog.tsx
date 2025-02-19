@@ -21,7 +21,7 @@ const Blog: React.FC = () => {
     <div className="relative z-10 flex flex-col items-center text-center w-full max-w-2xl">
       <div className="flex flex-col items-center justify-center w-full px-6">
         
-        {false ? <div style={{ color: "black", fontWeight: "bolder", fontSize: 15 }}> blog posts  will be coming soon! 👀</div>: <ul className="w-full max-w-2xl">
+        {true ? <div style={{ color: "black", fontWeight: "bolder", fontSize: 15 }}> blog posts  will be coming soon! 👀</div>: <ul className="w-full max-w-2xl">
           {blogPosts.map((post) => (
             <li key={post.id} className="w-full">
               <Link to={`/blog/${post.id}`} className="block w-full">
