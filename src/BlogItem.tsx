@@ -46,7 +46,7 @@ const NotionPage = ({ pageId }: { pageId: string }) => {
     fetchData();
   }, [pageId]);
 
-  if (!recordMap) return <p>Loading...</p>;
+  if (!recordMap) return <p style={{fontWeight: 'bold', fontSize: 16}}>Loading, please wait! ⏱️</p>;
 
   return (
     <div className="notion-container text-left" style={{maxWidth: '100vw'}}>
