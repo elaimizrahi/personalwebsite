@@ -12,8 +12,9 @@ const Blog: React.FC = () => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
 
     const blogPosts = [
-        {  pageId: '1a05874c3164800bafb6e6aac60bfee0', date: 'Feb 19, 2025', title: "Consili Project Overview"},
-        {  pageId: '1a05874c316480358a07e79b0810a666', date: 'Feb 15, 2025', title: "Scaling Consili's Infrastructure" },
+      {  pageId: '1a25874c316480dba2c5c7817baca732', date: 'Feb 22, 2025', title: "OS Threads vs Processes"},
+      {  pageId: '1a05874c3164800bafb6e6aac60bfee0', date: 'Feb 19, 2025', title: "Consili Project Overview"},
+      {  pageId: '1a05874c316480358a07e79b0810a666', date: 'Feb 15, 2025', title: "Scaling Consili's Infrastructure" },
         {  pageId: '1a05874c3164803db3f0e8cbb2143546', date: 'Feb 14, 2025', title: "Serverless Vercel Functions" },
       ];
   return (
