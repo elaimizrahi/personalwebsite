@@ -67,12 +67,12 @@ const App: React.FC = () => {
                     style={{ fontWeight: "bold", zIndex: 100 }}>
                     Home
                   </Link>
-                  <Link
-                    to="/blog"
+                  <a
+                    href="https://elaimizrahi.github.io/my-notes/"
                     className="text-gray-400 px-6 flex"
                     style={{ fontWeight: "bold", zIndex: 100 }}>
                     Blog
-                  </Link>
+                  </a>
                 </Group>
               </div>
 
