@@ -36,12 +36,11 @@ const Home: React.FC = () => {
 
         {/* About Section */}
         <p className="mt-6 text-gray-400 px-6">
-          Hey, I'm <text style={{fontWeight: 'bold'}}>Elai</text>! I'm a third-year Software Engineering student at the <text style={{fontWeight: 'bold'}}>University of Waterloo</text>, currently seeking <text style={{fontWeight: 'bold'}}>Summer 2025 Internship Opportunities</text>. My main interests center around databases, artificial intelligence, and full-stack development.
+          Hey, I'm <text style={{fontWeight: 'bold'}}>Elai</text>! I'm a third-year Software Engineering student at the <text style={{fontWeight: 'bold'}}>University of Waterloo</text>, currently seeking <text style={{fontWeight: 'bold'}}>2026 Internship Opportunities</text>. My main interests center around artificial intelligence, big data, and full-stack development.
         </p>
 
         <p className="mt-4 text-gray-400">
-          Previously, I interned as a Full-Stack Software Developer at <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://runql.com" className="text-blue-400">RunQL</a>. 
-          I have also completed internships at <a style={{textDecoration: 'underline', fontWeight: 'bold'}} href="https://secoda.co" className="text-blue-400">Secoda (YC S21)</a> and <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://avante.io" className="text-blue-400">Avante IO</a> as a Software Engineering Intern. 
+          Currently, I am incoming at <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://vividseats.com/" className="text-blue-400">Vivid Seats</a> for Summer 2025. Previously, I interned as a Software Engineering Intern <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://runql.com" className="text-blue-400">RunQL</a>, <a style={{textDecoration: 'underline', fontWeight: 'bold'}} href="https://secoda.co" className="text-blue-400">Secoda (YC S21)</a> and <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://avante.io" className="text-blue-400">Avante IO</a>. 
         </p>
 
         <p className="mt-4 text-gray-400">
@@ -50,7 +49,7 @@ const Home: React.FC = () => {
 
         {/* Social Links */}
         <p className="mt-6 text-gray-400">
-          Feel free to view my on GitHub, connect with me on LinkedIn, or shoot me an email.
+          Feel free to connect with me on LinkedIn, view my GitHub, or shoot me an email!
         </p>
         <Group justify="center">
           <a href="https://github.com/elaimizrahi" target="_blank" rel="noopener noreferrer">
