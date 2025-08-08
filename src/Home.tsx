@@ -1,11 +1,10 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import profileImage from "./images/IMG_5423.png"; // Replace with your actual image
+import profileImage from "./images/IMG_5423.jpeg"; // Replace with your actual image
 import {
   Stack,
   Group,
 } from "@mantine/core";
-
 const Home: React.FC = () => {
 
   return (
@@ -40,7 +39,7 @@ const Home: React.FC = () => {
         </p>
 
         <p className="mt-4 text-gray-400">
-          Currently, I am incoming at <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://vividseats.com/" className="text-blue-400">Vivid Seats</a> for Summer 2025. Previously, I interned as a Software Engineering Intern <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://runql.com" className="text-blue-400">RunQL</a>, <a style={{textDecoration: 'underline', fontWeight: 'bold'}} href="https://secoda.co" className="text-blue-400">Secoda (YC S21)</a> and <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://avante.io" className="text-blue-400">Avante IO</a>. 
+          Currently, I am interning at <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://vividseats.com/" className="text-blue-400">Vivid Seats</a> for Summer 2025. Previously, I worked as a Software Engineering Intern <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://runql.com" className="text-blue-400">RunQL</a>, <a style={{textDecoration: 'underline', fontWeight: 'bold'}} href="https://secoda.co" className="text-blue-400">Secoda (YC S21)</a> and <a style={{textDecoration: 'underline', fontWeight: 'bold'}}href="https://avante.io" className="text-blue-400">Avante IO</a>. 
         </p>
 
         <p className="mt-4 text-gray-400">
